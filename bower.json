@@ -1,0 +1,21 @@
+{
+  "name": "Hang in there",
+  "homepage": "https://github.com/vigotskij/hanginthere",
+  "authors": [
+    "vigotskij <mdqulto@gmail.com>"
+  ],
+  "description": "Simple game app",
+  "main": "index.html",
+  "keywords": [
+    "javascript",
+    "game"
+  ],
+  "license": "GPL v3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
