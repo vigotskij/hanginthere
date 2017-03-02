@@ -1,1 +1,1 @@
-window.Control = {};
+window.Control = { } ;
