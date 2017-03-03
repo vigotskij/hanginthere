@@ -15,6 +15,11 @@ describe("Control", function() {
 
   it('should paint N empty boxes for secretWord letters', function()
     {
+      Control.init("pindonga") ;
+      document.querySelectorAll(".letter") ;
+      var boxes = document.querySelectorAll(".letter") ;
+      chai.expect(boxes.length).to.eql("pindonga".length) ;
+      //parece que al control que me pasaste no le falta nada
 
     }
   ) ;
