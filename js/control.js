@@ -3,13 +3,10 @@ window.Control = {
                     {
                       let box = document.createElement( "div" ) ;
                       box.className = "letter" ;
-                      let after = document.getElementsByTagName( "body" ) ;
-//                      document.body.insertBefore( box , after ) ;
-                      after.innerHTML = box ; // acá esperaba que creara un box por vuelta
-                                              // pero no crea ninguno
-                                              // también creo que estoy más cerca :D
-
+                      let after = document.querySelector( "body" ) ;
+                      after.appendChild( box ) ;
                     } ,
+                    
   init :            function ( secretWord )
                     {
                       for ( let idx = 0 ; idx < secretWord.length ; idx++ )
