@@ -1,3 +1,5 @@
+const expect = chai.expect;
+
 describe("Control", function() {
   // aca van a ir los it( ...)
   before(function() {
@@ -22,11 +24,29 @@ describe("Control", function() {
       //parece que al control que me pasaste no le falta nada
 
     }
-  ) ;
+  );
+
+  it('should keep secretWord inside Control', function() {
+     let word = "cachin";
+     Control.init(word);
+     expect(Control.secretWord).to.eql(word);
+  });
 
   it('should ask secretWord if has letter on user input', function()
     {
+        let
+            _check = "",
+            word   =
+            {
+                length: 2,
+                has: function(letter) {
+                    _check = letter;
+                }
+            };
 
+        Control.init(word);
+        Control.inputLetter("e");
+        expect(_check).to.eql("e");
     }
   ) ;
 
