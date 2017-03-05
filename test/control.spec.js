@@ -34,7 +34,7 @@ describe("Control", function() {
 
   it('should ask secretWord if has letter on user input', function()
     {
-        let
+        let   
             _check = "",
             word   =
             {
