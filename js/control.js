@@ -17,7 +17,15 @@ window.Control = {
                     } ,
   secretWord :      ""
                     ,
-  inputLetter :     ""
-                    ,
+  inputLetter :     function ( input )
+                    {
+                      for ( let idx = 0 ; idx < Control.secretWord.length ; idx++)
+                      {
+                        if ( input === Control.secretWord[ idx ] )
+                        {
+                          return true ;
+                        }
+                      };
+                    } ,
 
 } ;
