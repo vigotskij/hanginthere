@@ -52,6 +52,19 @@ window.Control = {
   inputLetter :     function ( input )
                     {
                       return this.secretWord.has( input ) ;
+                    } ,
+  repeatedInput :   function ( input )
+                    {
+                      let repeated = false ;
+                      if ( this.secretWord.has( input ) )
+                      {
+                        let firstIndex = this.secretWord.revealed.indexOf( input ) ;
+                        if ( this.secretWord.revealed.indexOf( input , firstIndex ) !== -1 )
+                        {
+                          repeated = true ;
+                        }
+                      }
+                      return repeated ;
                     }
 
 } ;

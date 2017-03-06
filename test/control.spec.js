@@ -24,19 +24,28 @@ describe("Control", function() {
      let word = "cachin";
      Control.init(word);
      expect(Control.secretWord.revealed).to.eql(word);
-  });
+   }
+  );
 
-  it('should ask secretWord if has letter on user input', function()
+  it( 'should ask secretWord if has letter on user input' , function()
     {
-        Control.init( "verdura" );
+        Control.init( "verdura" ) ;
         expect( Control.inputLetter( "e" ) ).to.eql( true ) ;
     }
   ) ;
-  it ('Should return if given character is in secretWord', function ()
+  it ( 'Should return if given character is in secretWord' , function ( )
       {
         Control.init( "verdura" ) ;
-        expect(Control.secretWord.has( "e" ) ).to.eql( true ) ;
-        expect(Control.secretWord.has( "f" ) ).to.eql( false ) ;
+        expect( Control.secretWord.has( "e" ) ).to.eql( true ) ;
+        expect( Control.secretWord.has( "f" ) ).to.eql( false ) ;
+      }
+  ) ;
+  it ( 'Should return if given character is repeated' , function ( )
+      {
+          Control.init( "faraona" ) ;
+          expect( Control.repeatedInput( "a" ) ).to.eql( true ) ;
+          expect( Control.repeatedInput( "o" ) ).to.eql( false ) ;
+          expect( Control.repeatedInput( "x" ) ).to.eql( false ) ;
       }
   ) ;
 });
