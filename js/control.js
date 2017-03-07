@@ -81,5 +81,20 @@ window.Control = {
                           inMatches = this.matches.indexOf( input ) !== -1 ;
                       return ( inErrors || inMatches ) ;
                     } ,
-
+  occurrences :     function ( input , word )
+                    {
+                      if ( word.contains( input , word ) )
+                      {
+                         ;
+                      }
+                      ;
+                    } ,
 } ;
+function contains( element , collection )
+{
+  return collection.indexOf( element ) !== -1 ;
+}
+String.prototype.contains = function ( input )
+{
+    return contains( input , this ) ;
+};

@@ -15,8 +15,6 @@ describe("Control", function() {
         document.querySelectorAll(".letter") ;
         let boxes = document.querySelectorAll(".letter") ;
         chai.expect(boxes.length).to.eql("pindonga".length) ;
-      //parece que al control que me pasaste no le falta nada
-
       }
     );
 
@@ -27,12 +25,6 @@ describe("Control", function() {
     }
     );
 
-  //  it( 'should ask secretWord if has letter on user input' , function()
-  //    {
-  //        Control.init( "verdura" ) ;
-  //        expect( Control.inputLetter( "e" ) ).to.eql( true ) ;
-  //    }
-  //  ) ;
     it ( 'Should return if given character is in secretWord' , function ( )
         {
           Control.init( "verdura" ) ;
@@ -41,6 +33,7 @@ describe("Control", function() {
         }
     ) ;
   } ) ;
+
   describe ( 'About input and inputs' , function()
   {
     it ( 'Should keep input inside Control' , function ()
@@ -61,7 +54,7 @@ describe("Control", function() {
     it ( 'Should keep track of previous inputs' , function ( )
       {
         const inp1 = "d" ;
-        const inp2 = "f" ;
+        const inp2 = "w" ;
         Control.inputLetter( inp1 ) ;
         Control.removeInput() ;
         Control.inputLetter( inp1 ) ;
@@ -94,4 +87,22 @@ describe("Control", function() {
       } ) ;
     } ) ;
 
+    describe ( "About utilities" , function( )
+    {
+      it ( "Should count occurrences" , function( )
+      {
+        var idxs = occurrences("s", "mississippi");
+        expect(idxs[0]).to.eql(2);
+        expect(idxs[1]).to.eql(3);
+        expect(idxs[2]).to.eql(5);
+        expect(idxs[3]).to.eql(6);
+        // this way you know how many times its repeated
+        expect(idxs.length).to.eql(4);
+      } ) ;
+      it ( 'Should... something' , function( )
+      {
+        expect( contains( "a" , "pepe" ) ).to.eql( false ) ;
+        expect( contains( "p" , "pepe" ) ).to.eql( true ) ;
+      } ) ;
+    } ) ;
 } ) ;
