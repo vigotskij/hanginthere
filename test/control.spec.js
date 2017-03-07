@@ -23,7 +23,7 @@ describe("Control", function() {
     it('should keep secretWord inside Control', function() {
       const word = "cachin";
       Control.init(word);
-      expect(Control.secretWord.revealed).to.eql(word);
+      expect(Control.secretWord).to.eql(word);
     }
     );
 
@@ -36,8 +36,8 @@ describe("Control", function() {
     it ( 'Should return if given character is in secretWord' , function ( )
         {
           Control.init( "verdura" ) ;
-          expect( Control.secretWord.has( "e" ) ).to.eql( true ) ;
-          expect( Control.secretWord.has( "f" ) ).to.eql( false ) ;
+          expect( Control.match( "e" ) ).to.eql( true ) ;
+          expect( Control.match( "f" ) ).to.eql( false ) ;
         }
     ) ;
     it ( 'Should return if given character is repeated' , function ( )
@@ -84,26 +84,21 @@ describe("Control", function() {
       } ) ;
     it ( 'Should not take repeated inputs' , function ( )
       {
+        Control.inputLetter( "e" ) ;
         Control.removeInput() ;
-        const inp = "e" ;
-        Control.inputLetter( inp ) ;
-        Control.removeInput() ;
-        Control.inputLetter( inp ) ;
+        Control.inputLetter( "e" ) ;
         expect( Control.input ).to.eql( '' ) ;
         } ) ;
     it ( 'Should store inputs' , function ( )
       {
         Control.removeInput() ;
-        const word = "granada" ;
-        const inp1 = "g" ;
-        const inp2 = "f" ;
-        Control.init( word ) ;
-        Control.inputLetter( inp1 ) ;
+        Control.init( "granada" ) ;
+        Control.inputLetter( "g" ) ;
         Control.removeInput() ;
-        Control.inputLetter( inp2 ) ;
+        Control.inputLetter( "f" ) ;
         Control.removeInput() ;
-        expect( Control.matches[ 0 ] ).to.eql( inp1 ) ;
-        expect( Control.errors[ 0 ] ).to.eql( inp2 ) ;
+        expect( Control.matches[ 0 ] ).to.eql( "g" ) ;
+        expect( Control.errors[ 0 ] ).to.eql( "f" ) ;
       } ) ;
     } ) ;
 
