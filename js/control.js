@@ -40,9 +40,9 @@ window.Control = {
                         first : "" ,
                         last : "" ,
 
-                        order : "" , // I guess it has to exist, but I don't know
-                                    // how to make it happen (yet).
-                        lettersMatch : "" , // same than last key.
+  //                    order : "" , // I guess it has to exist, but I don't know
+                                     // how to make it happen (yet).
+  //                    lettersMatch : "" , // same than last key.
 
                         has : function ( input )
                         {
@@ -52,12 +52,16 @@ window.Control = {
   inputLetter :     function ( input )
                     {
                       this.input = input ;
-                      return this.secretWord.has( input ) ;
+                      if ( this.secretWord.has( input ) && !this.alreadyGiven( input ) )
+                      {
+                        this.storeInput( input ) ;
+                      }
+                      this.secretWord.has( input ) ;
                     } ,
   repeatedLetter :   function ( input )
                     {
                       let repeated ;
-                      if ( this.secretWord.has( input ) )
+                      if ( this.secretWord.has( input ) >= 0 )
                       {
                         let firstIndex = this.secretWord.revealed.indexOf( input ) ;
                         if ( this.secretWord.revealed.indexOf( input , firstIndex + 1 ) !== -1 )
@@ -76,5 +80,47 @@ window.Control = {
                     {
                       this.input = "" ;
                     } ,
-  inputStorage :    "" ,
+  matches :         [] ,
+  errors :          [] ,
+
+  storeInput :      function ( input )
+                    {
+                      if ( this.match( input ) )
+                      {
+                        this.matches.unshift( input ) ;
+                      } else {
+                        this.errors.unshift( input ) ;
+                      }
+                    } ,
+
+  match :         function ( input )
+                    {
+                      for ( let idx = 0 ; idx < this.secretWord.revealed.length; idx++) {
+                        if ( this.secretWord.revealed[ idx ] === input )
+                        {
+                          return true ;
+                        }
+                      }
+                      return false ;
+                    } ,
+
+  alreadyGiven :    function ( input )
+                    {
+                      for ( let idx = 0 ; idx < this.matches.length ; idx++ )
+                      {
+                        if ( this.matches[ idx ] === input )
+                        {
+                          return true ;
+                        }
+                      }
+                      for ( let idx = 0 ; idx < this.errors.length ; idx++ )
+                      {
+                        if ( this.errors[ idx ] === input )
+                        {
+                          return true ;
+                        }
+                      }
+                      return false ;
+                    } ,
+
 } ;

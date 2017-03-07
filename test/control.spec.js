@@ -4,7 +4,7 @@ describe("Control", function() {
   // aca van a ir los it( ...)
   it("should create window.Control", function()
     {
-      chai.expect(typeof window.Control).to.eql("object")
+      expect(typeof window.Control).to.eql("object")
     }
   ) ;
   describe( 'About secretWord' , function ()
@@ -13,7 +13,7 @@ describe("Control", function() {
       {
         Control.init("pindonga") ;
         document.querySelectorAll(".letter") ;
-        var boxes = document.querySelectorAll(".letter") ;
+        let boxes = document.querySelectorAll(".letter") ;
         chai.expect(boxes.length).to.eql("pindonga".length) ;
       //parece que al control que me pasaste no le falta nada
 
@@ -21,18 +21,18 @@ describe("Control", function() {
     );
 
     it('should keep secretWord inside Control', function() {
-      let word = "cachin";
+      const word = "cachin";
       Control.init(word);
       expect(Control.secretWord.revealed).to.eql(word);
     }
     );
 
-    it( 'should ask secretWord if has letter on user input' , function()
-      {
-          Control.init( "verdura" ) ;
-          expect( Control.inputLetter( "e" ) ).to.eql( true ) ;
-      }
-    ) ;
+  //  it( 'should ask secretWord if has letter on user input' , function()
+  //    {
+  //        Control.init( "verdura" ) ;
+  //        expect( Control.inputLetter( "e" ) ).to.eql( true ) ;
+  //    }
+  //  ) ;
     it ( 'Should return if given character is in secretWord' , function ( )
         {
           Control.init( "verdura" ) ;
@@ -68,12 +68,13 @@ describe("Control", function() {
     ) ;
     it ( 'Should keep track of previous inputs' , function ( )
       {
-        let inp = "d" ;
-        Control.inputLetter( inp ) ;
+        const inp1 = "d" ;
+        const inp2 = "f" ;
+        Control.inputLetter( inp1 ) ;
         Control.removeInput() ;
-        Control.inputLetter( inp ) ;
-        expect( alreadyGiven() ).to.eql( true ) ;
-        expect( alreadyGiven() ).to.eql( false ) ;
+        Control.inputLetter( inp1 ) ;
+        expect( Control.alreadyGiven( inp1 ) ).to.eql( true ) ;
+        expect( Control.alreadyGiven( inp2 ) ).to.eql( false ) ;
       } ) ;
     it ( 'Should warn if current input has been already given' , function ( )
       {
@@ -83,11 +84,27 @@ describe("Control", function() {
       } ) ;
     it ( 'Should not take repeated inputs' , function ( )
       {
+        Control.removeInput() ;
         const inp = "e" ;
         Control.inputLetter( inp ) ;
         Control.removeInput() ;
         Control.inputLetter( inp ) ;
         expect( Control.input ).to.eql( '' ) ;
+        } ) ;
+    it ( 'Should store inputs' , function ( )
+      {
+        Control.removeInput() ;
+        const word = "granada" ;
+        const inp1 = "g" ;
+        const inp2 = "f" ;
+        Control.init( word ) ;
+        Control.inputLetter( inp1 ) ;
+        Control.removeInput() ;
+        Control.inputLetter( inp2 ) ;
+        Control.removeInput() ;
+        expect( Control.matches[ 0 ] ).to.eql( inp1 ) ;
+        expect( Control.errors[ 0 ] ).to.eql( inp2 ) ;
       } ) ;
     } ) ;
+
 } ) ;
