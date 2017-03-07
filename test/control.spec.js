@@ -29,12 +29,12 @@ describe("Control", function() {
   it('should keep secretWord inside Control', function() {
      let word = "cachin";
      Control.init(word);
-     expect(Control.secretWord).to.eql(word);
+     expect(Control.secretWord.revealed).to.eql(word);
   });
 
   it('should ask secretWord if has letter on user input', function()
     {
-        let   
+        let
             _check = "",
             word   =
             {
