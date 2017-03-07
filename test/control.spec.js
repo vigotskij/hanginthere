@@ -2,12 +2,6 @@ const expect = chai.expect;
 
 describe("Control", function() {
   // aca van a ir los it( ...)
-  before(function() {
-      window.Control.secretWord = {
-        length: 5
-      }
-    }
-  );
 
   it("should create window.Control", function()
     {
@@ -34,20 +28,15 @@ describe("Control", function() {
 
   it('should ask secretWord if has letter on user input', function()
     {
-        let
-            _check = "",
-            word   =
-            {
-                length: 2,
-                has: function(letter) {
-                    _check = letter;
-                }
-            };
-
-        Control.init(word);
-        Control.inputLetter("e");
-        expect(_check).to.eql("e");
+        Control.init( "verdura" );
+        expect( Control.inputLetter( "e" ) ).to.eql( true ) ;
     }
   ) ;
-
+  it ('Should return if given character is in secretWord', function ()
+      {
+        Control.init( "verdura" ) ;
+        expect(Control.secretWord.has( "e" ) ).to.eql( true ) ;
+        expect(Control.secretWord.has( "f" ) ).to.eql( false ) ;
+      }
+  ) ;
 });

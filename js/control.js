@@ -7,32 +7,32 @@ window.Control = {
                       after.appendChild( box ) ;
                     } ,
 
-  fillFirstBoxWithFirstChar : function ( const firstChar )
+  fillFirstBoxWithFirstChar : function ( firstChar )
                     {
-                      let firstBox = document.querySelector( "letter" ) ;
-                      firstBox.innerHTML = firstChar ;
+                      let firstBox = document.querySelector( ".letter" ) ;
+                      firstBox.innerText = firstChar ;
                     } ,
 
-  fillLastBoxWithLastChar : function ( const lastChar )
+  fillLastBoxWithLastChar : function ( lastChar )
                     {
-                      let boxes = document.querySelectorAll( "letter" ) ;
+                      let boxes = document.querySelectorAll( ".letter" ) ;
                       let lastBox = boxes[ boxes.length - 1 ] ;
-                      lastBox.innerHTML = lastChar ;
-                    }
-  init :            function ( const secretWord )
+                      lastBox.innerText = lastChar ;
+                    } ,
+  init :            function ( secretWord )
                     {
                       for ( let idx = 0 ; idx < secretWord.length ; idx++ )
                       {
                         window.Control.createEmptyBox( ) ;
                       }
 
-                      Control.secretWord.revealed = secretWord ;
-                      Control.secretWord.initialized = true ;
-                      Control.secretWord.first = secretWord [ 0 ] ;
-                      Control.secretWord.last = secretWord [ secretWord.length - 1 ] ;
+                      this.secretWord.revealed = secretWord ;
+                      this.secretWord.initialized = true ;
+                      this.secretWord.first = secretWord [ 0 ] ;
+                      this.secretWord.last = secretWord [ secretWord.length - 1 ] ;
 
-                      fillFirstBoxWithFirstChar ( ) ;
-                      fillLastBoxWithLastChar ( ) ;
+                      this.fillFirstBoxWithFirstChar ( this.secretWord.first ) ;
+                      this.fillLastBoxWithLastChar ( this.secretWord.last ) ;
                     } ,
   secretWord :      {
                         revealed : "" ,
@@ -42,21 +42,16 @@ window.Control = {
 
                         order : "" , // I guess it has to exist, but I don't know
                                     // how to make it happen (yet).
-                        lettersQuantity : "" , // same than last key.
+                        lettersMatch : "" , // same than last key.
 
-                        has : function ( const input )
+                        has : function ( input )
                         {
-                          for ( let idx = 0 ; idx < Control.secretWord.length ; idx++)
-                          {
-                            if ( input === Control.secretWord.revealed[ idx ] )
-                            {
-                              return true ;
-                            }
-                          };
+                          return this.revealed.indexOf(input) !== -1 ;
                         } ,
+                    } ,
+  inputLetter :     function ( input )
+                    {
+                      return this.secretWord.has( input ) ;
                     }
-                    ,
-  inputLetter :     function ( const input ) {}
-                    //
 
 } ;
