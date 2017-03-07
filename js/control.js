@@ -42,26 +42,15 @@ window.Control = {
   inputLetter :     function ( input )
                     {
                       this.input = input ;
-                      if ( this.alreadyGiven ( input ) )
+                      if ( this.alreadyGiven ( this.input ) )
                       {
+                        this.removeInput() ;
                         return 'hey! already given!' ;
-                      }
-                      if ( this.match( input ) && !this.alreadyGiven( input ) )
-                      {
-                        this.storeInput( input ) ;
-                      }
-                    } ,
-  repeatedLetter :  function ( input )
-                    {
-                      let repeated ;
-                      if ( this.match ( input ) )
-                      {
-                        let firstIndex = this.secretWord.indexOf( input ) ;
-                        return this.secretWord.indexOf( input , firstIndex + 1 ) !== -1 ;
                       } else {
-                        return false ;
+                        this.storeInput( this.input ) ;
                       }
                     } ,
+
   input :           "" ,
   removeInput :     function ()
                     {
@@ -87,22 +76,10 @@ window.Control = {
 
   alreadyGiven :    function ( input )
                     {
-                      let result = false ;
-                      for ( let idx = 0 ; idx < this.matches.length ; idx++ )
-                      {
-                        if ( this.matches[ idx ] === input )
-                        {
-                          result = true ;
-                        }
-                      }
-                      for ( let idx = 0 ; idx < this.errors.length ; idx++ )
-                      {
-                        if ( this.errors[ idx ] === input )
-                        {
-                          result = true ;
-                        }
-                      }
-                      return result ;
+                      let
+                          inErrors  = this.errors.indexOf( input ) !== -1 ,
+                          inMatches = this.matches.indexOf( input ) !== -1 ;
+                      return ( inErrors || inMatches ) ;
                     } ,
 
 } ;

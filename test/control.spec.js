@@ -40,14 +40,6 @@ describe("Control", function() {
           expect( Control.match( "f" ) ).to.eql( false ) ;
         }
     ) ;
-    it ( 'Should return if given character is repeated' , function ( )
-        {
-            Control.init( "faraona" ) ;
-            expect( Control.repeatedLetter( "a" ) ).to.eql( true ) ;
-            expect( Control.repeatedLetter( "o" ) ).to.eql( false ) ;
-            expect( Control.repeatedLetter( "x" ) ).to.eql( false ) ;
-        }
-    ) ;
   } ) ;
   describe ( 'About input and inputs' , function()
   {
