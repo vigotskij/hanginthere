@@ -43,9 +43,32 @@ describe("Control", function() {
   it ( 'Should return if given character is repeated' , function ( )
       {
           Control.init( "faraona" ) ;
-          expect( Control.repeatedInput( "a" ) ).to.eql( true ) ;
-          expect( Control.repeatedInput( "o" ) ).to.eql( false ) ;
-          expect( Control.repeatedInput( "x" ) ).to.eql( false ) ;
+          expect( Control.repeatedLetter( "a" ) ).to.eql( true ) ;
+          expect( Control.repeatedLetter( "o" ) ).to.eql( false ) ;
+          expect( Control.repeatedLetter( "x" ) ).to.eql( false ) ;
       }
   ) ;
-});
+  it ( 'Should keep input inside Control' , function ()
+    {
+      const inp = "e" ;
+      Control.inputLetter( inp ) ;
+      expect( Control.input ).to.eql( inp ) ;
+    }
+  ) ;
+  it ( 'Should remove input after use' , function ()
+    {
+      const inp = "f" ;
+      Control.inputLetter( inp ) ;
+      Control.removeInput() ;
+      expect( Control.input ).to.eql( "" ) ;
+    }
+  ) ;
+  it ( 'Should keep track of previous inputs' , function ( )
+    {
+
+    } ) ;
+  it ( 'Should warn if current input has been already given' , function ( )
+  {
+
+  } ) ;
+} ) ;

@@ -51,20 +51,30 @@ window.Control = {
                     } ,
   inputLetter :     function ( input )
                     {
+                      this.input = input ;
                       return this.secretWord.has( input ) ;
                     } ,
-  repeatedInput :   function ( input )
+  repeatedLetter :   function ( input )
                     {
-                      let repeated = false ;
+                      let repeated ;
                       if ( this.secretWord.has( input ) )
                       {
                         let firstIndex = this.secretWord.revealed.indexOf( input ) ;
-                        if ( this.secretWord.revealed.indexOf( input , firstIndex ) !== -1 )
+                        if ( this.secretWord.revealed.indexOf( input , firstIndex + 1 ) !== -1 )
                         {
                           repeated = true ;
+                        } else {
+                          repeated = false ;
                         }
+                      } else {
+                        repeated = false ;
                       }
                       return repeated ;
-                    }
-
+                    } ,
+  input :           "" ,
+  removeInput :     function ()
+                    {
+                      this.input = "" ;
+                    } ,
+  inputStorage :    "" ,
 } ;
