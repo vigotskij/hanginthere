@@ -42,13 +42,13 @@ window.Control = {
   inputLetter :     function ( input )
                     {
                       this.input = input ;
-                      if ( this.match( input ) && !this.alreadyGiven( input ) )
-                      {
-                        this.storeInput( input ) ;
-                      }
                       if ( this.alreadyGiven ( input ) )
                       {
                         return 'hey! already given!' ;
+                      }
+                      if ( this.match( input ) && !this.alreadyGiven( input ) )
+                      {
+                        this.storeInput( input ) ;
                       }
                     } ,
   repeatedLetter :  function ( input )
@@ -57,24 +57,18 @@ window.Control = {
                       if ( this.match ( input ) )
                       {
                         let firstIndex = this.secretWord.indexOf( input ) ;
-                        if ( this.secretWord.indexOf( input , firstIndex + 1 ) !== -1 )
-                        {
-                          repeated = true ;
-                        } else {
-                          repeated = false ;
-                        }
+                        return this.secretWord.indexOf( input , firstIndex + 1 ) !== -1 ;
                       } else {
-                        repeated = false ;
+                        return false ;
                       }
-                      return repeated ;
                     } ,
   input :           "" ,
   removeInput :     function ()
                     {
                       this.input = "" ;
                     } ,
-  matches :         [] ,
-  errors :          [] ,
+  matches :         [ ] ,
+  errors :          [ ] ,
 
   storeInput :      function ( input )
                     {
@@ -93,7 +87,7 @@ window.Control = {
 
   alreadyGiven :    function ( input )
                     {
-                      let result ;
+                      let result = false ;
                       for ( let idx = 0 ; idx < this.matches.length ; idx++ )
                       {
                         if ( this.matches[ idx ] === input )
@@ -108,7 +102,6 @@ window.Control = {
                           result = true ;
                         }
                       }
-                      result = false ;
                       return result ;
                     } ,
 
