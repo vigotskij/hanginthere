@@ -90,16 +90,25 @@ String.prototype.contains = function ( input )
 function occurrences( input , word )
 {
         let result = [] ;
-        if ( !word.contains( input ) ) { return result ; }
         let idx = -1 ;
-        do {
-          idx = word.indexOf( input , idx + 1 ) ;
+        while ( ( idx = word.indexOf( input , idx + 1) ) !== -1 )
+        {
           result.push( idx ) ;
-        } while ( word.indexOf( input , idx + 1 ) !== -1 );
+        }
         return result ;
 }
 
 String.prototype.occurrences = function ( input )
 {
-    return occurrences( input , this );
+    const result = occurrences( input , this );
+    for ( let idx = 0 ; idx < result.length ; idx++ )
+    {
+      found( input , result[ idx ] ) ;
+    }
+    return result ;
+}
+
+function found( letter , idx )
+{
+  document.write( letter + " is at " + idx + "<br>" ) ;
 }

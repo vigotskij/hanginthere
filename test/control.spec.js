@@ -91,7 +91,7 @@ describe("Control", function() {
     {
       it ( "Should count occurrences" , function( )
       {
-        let idxs = occurrences("s", "mississippi");
+        const idxs = occurrences("s", "mississippi");
         expect( idxs[ 0 ] ).to.eql( 2 ) ;
         expect( idxs[ 1 ] ).to.eql( 3 ) ;
         expect( idxs[ 2 ] ).to.eql( 5 ) ;
@@ -99,20 +99,16 @@ describe("Control", function() {
         // this way you know how many times its repeated
         expect( idxs.length ).to.eql( 4 );
 
-//        idxs = occurrences("f" , "faraona" ) ;
-//        expect( idx[ 0 ] ).to.eql( 0 ) ;
-//        expect( idxs2.length )to.eql( 1 ) ;
-//
-  //      idxs = occurrences( "a" , "faraona" ) ;
-    //    expect( idxs[ 0 ] ).to.eql( 1 ) ;
-      //  expect( idxs[ 1 ] ).to.eql( 3 ) ;
-      //  expect( idxs[ 2 ] ).to.eql( 6 ) ;
-    //    expect( idxs.length )to.eql( 3 ) ;
       } ) ;
       it ( 'Should... something' , function( )
       {
         expect( contains( "a" , "pepe" ) ).to.eql( false ) ;
         expect( contains( "p" , "pepe" ) ).to.eql( true ) ;
       } ) ;
+      it ( 'Should write the item at pos ' ,  function()
+    {
+      const word = "mississippi" ;
+      expect( word.occurrences( "s" ) ).to.eql("some String") ;
+    } ) ;
     } ) ;
 } ) ;
