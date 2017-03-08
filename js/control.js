@@ -61,17 +61,12 @@ window.Control = {
 
   storeInput :      function ( input )
                     {
-                      if ( this.match( input ) )
+                      if ( this.secretWord.contains( input ) )
                       {
                         this.matches.unshift( input ) ;
                       } else {
                         this.errors.unshift( input ) ;
                       }
-                    } ,
-
-  match :         function ( input )
-                    {
-                      return this.secretWord.indexOf(input) !== -1 ;
                     } ,
 
   alreadyGiven :    function ( input )
@@ -81,15 +76,8 @@ window.Control = {
                           inMatches = this.matches.indexOf( input ) !== -1 ;
                       return ( inErrors || inMatches ) ;
                     } ,
-  occurrences :     function ( input , word )
-                    {
-                      if ( word.contains( input , word ) )
-                      {
-                         ;
-                      }
-                      ;
-                    } ,
-} ;
+  } ;
+
 function contains( element , collection )
 {
   return collection.indexOf( element ) !== -1 ;
@@ -98,3 +86,15 @@ String.prototype.contains = function ( input )
 {
     return contains( input , this ) ;
 };
+
+function occurrences( input , word )
+{
+        let result = [] ;
+        if ( !word.contains( input ) ) { return result ; }
+
+}
+
+String.prototype.occurrences = function ( input )
+{
+    return occurrences( input , this );
+}

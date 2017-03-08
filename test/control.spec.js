@@ -28,8 +28,8 @@ describe("Control", function() {
     it ( 'Should return if given character is in secretWord' , function ( )
         {
           Control.init( "verdura" ) ;
-          expect( Control.match( "e" ) ).to.eql( true ) ;
-          expect( Control.match( "f" ) ).to.eql( false ) ;
+          expect( Control.secretWord.contains( "e" ) ).to.eql( true ) ;
+          expect( Control.secretWord.contains( "f" ) ).to.eql( false ) ;
         }
     ) ;
   } ) ;
@@ -91,13 +91,13 @@ describe("Control", function() {
     {
       it ( "Should count occurrences" , function( )
       {
-        var idxs = occurrences("s", "mississippi");
-        expect(idxs[0]).to.eql(2);
-        expect(idxs[1]).to.eql(3);
-        expect(idxs[2]).to.eql(5);
-        expect(idxs[3]).to.eql(6);
+        let idxs = occurrences("s", "mississippi");
+        expect( idxs[ 0 ] ).to.eql( 2 ) ;
+        expect( idxs[ 1 ] ).to.eql( 3 ) ;
+        expect( idxs[ 2 ] ).to.eql( 5 ) ;
+        expect( idxs[ 3 ] ).to.eql( 6 ) ;
         // this way you know how many times its repeated
-        expect(idxs.length).to.eql(4);
+        expect( idxs.length ).to.eql( 4 );
       } ) ;
       it ( 'Should... something' , function( )
       {
