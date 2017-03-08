@@ -91,7 +91,12 @@ function occurrences( input , word )
 {
         let result = [] ;
         if ( !word.contains( input ) ) { return result ; }
-
+        let idx = -1 ;
+        do {
+          idx = word.indexOf( input , idx + 1 ) ;
+          result.push( idx ) ;
+        } while ( word.indexOf( input , idx + 1 ) !== -1 );
+        return result ;
 }
 
 String.prototype.occurrences = function ( input )

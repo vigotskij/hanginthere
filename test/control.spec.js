@@ -98,6 +98,16 @@ describe("Control", function() {
         expect( idxs[ 3 ] ).to.eql( 6 ) ;
         // this way you know how many times its repeated
         expect( idxs.length ).to.eql( 4 );
+
+//        idxs = occurrences("f" , "faraona" ) ;
+//        expect( idx[ 0 ] ).to.eql( 0 ) ;
+//        expect( idxs2.length )to.eql( 1 ) ;
+//
+  //      idxs = occurrences( "a" , "faraona" ) ;
+    //    expect( idxs[ 0 ] ).to.eql( 1 ) ;
+      //  expect( idxs[ 1 ] ).to.eql( 3 ) ;
+      //  expect( idxs[ 2 ] ).to.eql( 6 ) ;
+    //    expect( idxs.length )to.eql( 3 ) ;
       } ) ;
       it ( 'Should... something' , function( )
       {
