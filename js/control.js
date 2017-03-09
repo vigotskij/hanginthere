@@ -87,28 +87,27 @@ String.prototype.contains = function ( input )
     return contains( input , this ) ;
 };
 
-function occurrences( input , word )
+function occurrences( input , word , fn )
 {
         let result = [] ;
         let idx = -1 ;
         while ( ( idx = word.indexOf( input , idx + 1) ) !== -1 )
         {
           result.push( idx ) ;
+          if ( typeof fn === 'function' )
+          {
+            fn( input , idx) ;
+          }
         }
         return result ;
 }
 
-String.prototype.occurrences = function ( input )
+String.prototype.occurrences = function ( input, fn )
 {
-    const result = occurrences( input , this );
-    for ( let idx = 0 ; idx < result.length ; idx++ )
-    {
-      found( input , result[ idx ] ) ;
-    }
-    return result ;
+    return occurrences( input , this , fn );
 }
 
 function found( letter , idx )
 {
-  document.write( letter + " is at " + idx + "<br>" ) ;
+  return ( letter + " is at " + idx + "<br>" ) ;
 }

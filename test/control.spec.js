@@ -107,8 +107,7 @@ describe("Control", function() {
       } ) ;
       it ( 'Should write the item at pos ' ,  function()
     {
-      const word = "mississippi" ;
-      expect( word.occurrences( "s" ) ).to.eql("some String") ;
+      expect( found( "s" , 2 ) ).to.eql( "s is at 2<br>" ) ;
     } ) ;
     } ) ;
 } ) ;
