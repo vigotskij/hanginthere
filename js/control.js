@@ -49,11 +49,11 @@ window.Control = {
                         return 'hey! already given!' ;
                       } else {
                         this.storeInput( input ) ;
-                        const occ = this.secretWord.occurrences( input ) ;
-                        for ( let idx = 0; idx < occ.length ; idx++ )
-                        {
-                          this.revealFromSecretWord( occ[ idx ] ) ;
-                        }
+
+                        this.secretWord.occurrences( input , function( letter , id )
+                          {
+                            Control.revealFromSecretWord( id ) ;
+                          } ) ;
                       }
                     } ,
 
