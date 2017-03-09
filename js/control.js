@@ -4,8 +4,6 @@ window.Control = {
   matches :         [ ] ,
   errors :          [ ] ,
 
-  input :           "" ,
-
   createEmptyBox :  function ()
                     {
                       let box = document.createElement( "div" ) ;
@@ -39,36 +37,31 @@ window.Control = {
                       }
 
                       this.secretWord = secretWord ;
-                      const first = secretWord [ 0 ] ;
-                      const last = secretWord [ secretWord.length - 1 ] ;
-                      const end = secretWord.length - 1
+
                       this.revealFirst() ;
                       this.revealLast() ;
                     } ,
 
   inputLetter :     function ( input )
                     {
-                      this.input = input ;
-                      if ( this.alreadyGiven ( this.input ) )
+                      if ( this.alreadyGiven ( input ) )
                       {
-                        this.removeInput() ;
                         return 'hey! already given!' ;
                       } else {
-                        this.storeInput( this.input ) ;
-                        //this.revealFromSecretWord( this.secretWord.occurrences( input ) ) ;
+                        this.storeInput( input ) ;
+                        const occ = this.secretWord.occurrences( input ) ;
+                        for ( let idx = 0; idx < occ.length ; idx++ )
+                        {
+                          this.revealFromSecretWord( occ[ idx ] ) ;
+                        }
                       }
                     } ,
 
-  removeInput :     function ()
-                    {
-                      this.input = "" ;
-                    } ,
   resetControl :    function ()
                     {
                       this.secretWord = "" ;
                       this.matches = [] ;
                       this.errors = [] ;
-                      removeInput() ;
                     } ,
 
   storeInput :      function ( input )

@@ -36,27 +36,11 @@ describe("Control", function() {
 
   describe ( 'About input and inputs' , function()
   {
-    it ( 'Should keep input inside Control' , function ()
-      {
-        const inp = "e" ;
-        Control.inputLetter( inp ) ;
-        expect( Control.input ).to.eql( inp ) ;
-      }
-    ) ;
-    it ( 'Should remove input after use' , function ()
-      {
-        const inp = "f" ;
-        Control.inputLetter( inp ) ;
-        Control.removeInput() ;
-        expect( Control.input ).to.eql( "" ) ;
-      }
-    ) ;
+
     it ( 'Should keep track of previous inputs' , function ( )
       {
         const inp1 = "d" ;
         const inp2 = "w" ;
-        Control.inputLetter( inp1 ) ;
-        Control.removeInput() ;
         Control.inputLetter( inp1 ) ;
         expect( Control.alreadyGiven( inp1 ) ).to.eql( true ) ;
         expect( Control.alreadyGiven( inp2 ) ).to.eql( false ) ;
@@ -67,21 +51,11 @@ describe("Control", function() {
         Control.inputLetter( inp ) ;
         expect( Control.inputLetter( inp ) ).to.eql('hey! already given!') ;
       } ) ;
-    it ( 'Should not take repeated inputs' , function ( )
-      {
-        Control.inputLetter( "e" ) ;
-        Control.removeInput() ;
-        Control.inputLetter( "e" ) ;
-        expect( Control.input ).to.eql( '' ) ;
-        } ) ;
     it ( 'Should store inputs' , function ( )
       {
-        Control.removeInput() ;
         Control.init( "granada" ) ;
         Control.inputLetter( "g" ) ;
-        Control.removeInput() ;
         Control.inputLetter( "f" ) ;
-        Control.removeInput() ;
         expect( Control.matches[ 0 ] ).to.eql( "g" ) ;
         expect( Control.errors[ 0 ] ).to.eql( "f" ) ;
       } ) ;
