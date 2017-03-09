@@ -1,4 +1,11 @@
 window.Control = {
+  secretWord :      "" ,
+
+  matches :         [ ] ,
+  errors :          [ ] ,
+
+  input :           "" ,
+
   createEmptyBox :  function ()
                     {
                       let box = document.createElement( "div" ) ;
@@ -7,22 +14,22 @@ window.Control = {
                       after.appendChild( box ) ;
                     } ,
 
-  fillFirstBox :    function ( firstChar )
+  fillBox :         function (idx, letter)
                     {
-                      let firstBox = document.querySelector( ".letter" ) ;
-                      firstBox.innerText = firstChar ;
+                    var box = document.querySelectorAll(".letter")[idx];
+                    box.innerText = letter ;
                     } ,
-
-  fillLastBox :     function ( lastChar )
+  revealFromSecretWord : function ( idx )
                     {
-                      let boxes = document.querySelectorAll( ".letter" ) ;
-                      let lastBox = boxes[ boxes.length - 1 ] ;
-                      lastBox.innerText = lastChar ;
+                      this.fillBox( idx , this.secretWord[ idx ] ) ;
                     } ,
-  fillBoxes :       function ( first , last )
+  revealFirst :     function()
                     {
-                      this.fillFirstBox( first ) ;
-                      this.fillLastBox( last ) ;
+                      this.revealFromSecretWord( 0 ) ;
+                    } ,
+  revealLast :      function()
+                    {
+                      this.revealFromSecretWord( this.secretWord.length - 1 )
                     } ,
   init :            function ( secretWord )
                     {
@@ -34,10 +41,10 @@ window.Control = {
                       this.secretWord = secretWord ;
                       const first = secretWord [ 0 ] ;
                       const last = secretWord [ secretWord.length - 1 ] ;
-
-                      this.fillBoxes ( first , last ) ;
+                      const end = secretWord.length - 1
+                      this.revealFirst() ;
+                      this.revealLast() ;
                     } ,
-  secretWord :      "" ,
 
   inputLetter :     function ( input )
                     {
@@ -48,16 +55,21 @@ window.Control = {
                         return 'hey! already given!' ;
                       } else {
                         this.storeInput( this.input ) ;
+                        //this.revealFromSecretWord( this.secretWord.occurrences( input ) ) ;
                       }
                     } ,
 
-  input :           "" ,
   removeInput :     function ()
                     {
                       this.input = "" ;
                     } ,
-  matches :         [ ] ,
-  errors :          [ ] ,
+  resetControl :    function ()
+                    {
+                      this.secretWord = "" ;
+                      this.matches = [] ;
+                      this.errors = [] ;
+                      removeInput() ;
+                    } ,
 
   storeInput :      function ( input )
                     {
