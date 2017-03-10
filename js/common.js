@@ -9,3 +9,7 @@ function occurrences(collection, item, onMatch) {
     }
     return result;
 }
+
+if (typeof window === 'undefined') {
+    global.occurrences = occurrences;
+}

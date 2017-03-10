@@ -1,8 +1,14 @@
 'use strict';
 
+if (typeof window === 'undefined') {
+    module.exports = SecretWord;
+}
+
+
 function SecretWord(word) {
+    var hideChar = arguments[1] || '*';
     this.revealedIds = [];
-    this.revealedWord = '*'.repeat(word.length).split("");
+    this.revealedWord = hideChar.repeat(word.length).split("");
     this.text = word;
     return new Proxy({}, {
         get: (function(target, propertyKey, receiver) {

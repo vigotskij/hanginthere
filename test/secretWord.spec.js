@@ -1,5 +1,11 @@
 'use strict';
 
+if (typeof window === 'undefined') {
+    require('../js/common.js');
+    var expect = require('../bower_components/chai/chai').expect;
+    var SecretWord = require('../js/secretWord.js');
+}
+
 describe("Secret Word", function() {
 
     const hideChar = '*';
@@ -11,7 +17,7 @@ describe("Secret Word", function() {
     });
 
     it("should proxy .toString() method", function() {
-        expect(s.toString()).to.eql(hideChar);
+        expect(s.toString()).to.eql(hiddenWord.join(""));
     });
 
     it("should proxy [] operator", function() {
@@ -33,7 +39,7 @@ describe("Secret Word", function() {
     it("should reveal one letter", function() {
         var revealed = s.reveal(1);
         expect(s[1]).to.eql(word[1]);
-        expect(s.toString()).to.eql(hideChar+revealed+hideChar.repeat(word.length - 1));
+        expect(s.toString()).to.eql(hideChar+revealed+hideChar.repeat(word.length - 2));
     });
 
     it("should reveal array of letters", function() {
@@ -48,13 +54,14 @@ describe("Secret Word", function() {
 
         // they are revealed!!
         expect(s.indexOf("i")).to.eql(o[0]);
-        expect(s.indexOf("i", 1)).to.eql(o[3]);
+        expect(s.indexOf("i", 2)).to.eql(o[1]);
+        expect(s.indexOf("i", 4)).to.eql(o[2]);
     });
 
     describe("Custom mask char", function() {
         it("should be set on constructor", function() {
             var    ss = new SecretWord("hideme", "x");
-            expect(ss.toString).to.eql("xxxxxx")
+            expect(ss.toString()).to.eql("xxxxxx")
         })
     });
 
