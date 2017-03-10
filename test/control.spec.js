@@ -2,6 +2,12 @@ const expect = chai.expect;
 
 describe("Control", function() {
   // aca van a ir los it( ...)
+  before( function( )
+    {
+      e = document.createElement("div") ;
+      e.id = "main" ;
+      document.querySelector("body").appendChild(e) ;
+    } ) ;
   it("should create window.Control", function()
     {
       expect(typeof window.Control).to.eql("object")
@@ -79,9 +85,9 @@ describe("Control", function() {
         expect( contains( "a" , "pepe" ) ).to.eql( false ) ;
         expect( contains( "p" , "pepe" ) ).to.eql( true ) ;
       } ) ;
-      it ( 'Should write the item at pos ' ,  function()
+      it ( 'Should ...' ,  function()
     {
-      expect( found( "s" , 2 ) ).to.eql( "s is at 2<br>" ) ;
+
     } ) ;
     } ) ;
 } ) ;

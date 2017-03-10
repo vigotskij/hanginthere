@@ -8,7 +8,7 @@ window.Control = {
                     {
                       let box = document.createElement( "div" ) ;
                       box.className = "letter" ;
-                      let after = document.querySelector( "body" ) ;
+                      let after = document.querySelector( "#main" ) ;
                       after.appendChild( box ) ;
                     } ,
 
@@ -49,12 +49,8 @@ window.Control = {
                         return 'hey! already given!' ;
                       } else {
                         this.storeInput( input ) ;
-                        let that = this ;
-                        function fn( letter , id )
-                        {
-                          that.revealFromSecretWord( id ) ;
-                        }
-                        this.secretWord.occurrences( input , fn ) ;
+
+                        this.secretWord.occurrences( input , this.revealFromSecretWord.bind( this ) ) ;
                       }
                     } ,
 
@@ -102,7 +98,7 @@ function occurrences( input , word , fn )
           result.push( idx ) ;
           if ( typeof fn === 'function' )
           {
-            fn( input , idx) ;
+            fn( idx , input) ;
           }
         }
         return result ;
@@ -111,9 +107,4 @@ function occurrences( input , word , fn )
 String.prototype.occurrences = function ( input, fn )
 {
     return occurrences( input , this , fn );
-}
-
-function found( letter , idx )
-{
-  return ( letter + " is at " + idx + "<br>" ) ;
 }
