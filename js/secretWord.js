@@ -1,9 +1,8 @@
 'use strict';
 
-if (typeof window === 'undefined') {
+if (typeof module !== 'undefined') {
     module.exports = SecretWord;
 }
-
 
 function SecretWord(word) {
     var hideChar = arguments[1] || '*';
@@ -18,6 +17,7 @@ function SecretWord(word) {
             if (propertyKey === 'toString') {
                 return this.revealedWord.join.bind(this.revealedWord, "");
             }
+            // there's no need to expose a text property
             if (propertyKey === 'text') return this.revealedWord.join("");
 
             if (propertyKey in SecretWord.prototype) {
@@ -36,7 +36,7 @@ function SecretWord(word) {
         }).bind(this)
     });
 }
-SecretWord.prototype = /*Object.assign(String.prototype,*/ {
+SecretWord.prototype = {
     reveal: function(pos) {
         if (pos instanceof Array) {
             return pos.map(this.reveal, this);
@@ -46,5 +46,8 @@ SecretWord.prototype = /*Object.assign(String.prototype,*/ {
     },
     occurrences: function(letter, fn) {
         return occurrences(this.text, letter, fn);
+    },
+    is: function(word) {
+        return this.text === word;
     }
 };

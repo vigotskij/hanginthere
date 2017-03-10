@@ -9,7 +9,12 @@
   <div id="mocha"></div>
   <script src="../bower_components/chai/chai.js"></script>
   <script src="../bower_components/mocha/mocha.js"></script>
-  <script>mocha.setup('bdd')</script>
+  <script>
+    mocha.setup('bdd');
+    if(typeof expect === 'undefined') {
+        var expect = chai.expect;
+    }
+  </script>
 
 <script src="../js/common.js"></script>
 <!-- <script src="common.spec.js"></script> when it exists! -->
@@ -19,8 +24,8 @@
 
   <script src="../js/secretWord.js"></script>
   <script src="secretWord.spec.js"></script>
-  <script>
-    const expect = chai.expect;
+
+ <script>
     mocha.run();
   </script>
 </body>

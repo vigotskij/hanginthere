@@ -1,8 +1,9 @@
 'use strict';
 
-if (typeof window === 'undefined') {
+if (typeof require !== 'undefined') {
+    var expect = require('chai').expect;
+
     require('../js/common.js');
-    var expect = require('../bower_components/chai/chai').expect;
     var SecretWord = require('../js/secretWord.js');
 }
 
@@ -48,33 +49,40 @@ describe("Secret Word", function() {
     });
 
     // o right, to do this!
-    it("should return occurrences", function() {
+    it("should reveal be used as callback", function() {
         var o = s.occurrences("i", s.reveal);
-        expect(o).to.eql([1, 3, 5]);
-
         // they are revealed!!
         expect(s.indexOf("i")).to.eql(o[0]);
         expect(s.indexOf("i", 2)).to.eql(o[1]);
         expect(s.indexOf("i", 4)).to.eql(o[2]);
+        expect(s.toString()).to.eql("*i*i*i");
     });
+    it("should return occurrences", function() {
+        expect(s.occurrences("i")).to.eql([1, 3, 5]);
+    });
+
+    it("should say if is a given word", function() {
+        expect(s.is(word)).to.eql(true);
+        expect(s.is("hello")).to.eql(false);
+    })
 
     describe("Custom mask char", function() {
         it("should be set on constructor", function() {
             var    ss = new SecretWord("hideme", "x");
+            var    su = new SecretWord("hideme", "_");
             expect(ss.toString()).to.eql("xxxxxx")
-        })
+            expect(su.toString()).to.eql("______");
+        });
+
+        it("should set default as *", function() {
+            var s = new SecretWord("hi");
+            expect(s.toString()).to.eql("**");
+        });
     });
 
     it.skip("should not pass this test", function() {
 
         var s = new SecretWord("piriri");
-
-        console.log(s.charAt(0));
-
-        // all hidden
-        console.log(s.toString());
-        console.log(s[0]);
-
         // reveal one char position
         s.reveal(0);
         console.log(s[0]);
@@ -83,17 +91,7 @@ describe("Secret Word", function() {
         s.reveal(s.occurrences("r"));
         // given occurrences 2nd arg callback, also works both ways! :)
         s.occurrences("i", s.reveal);
-
         console.log(s.toString());
-
-        console.log(s.charAt(0));
-
-        // console.log(s.occurrences("i"));
-
-        // but all the other methods may crack the "security"
-        // slice, split, etc
-        // console.log(s.split(""));
-
         expect(false).to.eql(true);
     });
 });
