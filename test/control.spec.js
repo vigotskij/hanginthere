@@ -77,18 +77,4 @@ describe("Control", function() {
       } ) ;
     } ) ;
 
-    describe ( "About utilities" , function( )
-    {
-      it ( "Should count occurrences" , function( )
-      {
-        const idxs = occurrences("s", "mississippi");
-        expect( idxs[ 0 ] ).to.eql( 2 ) ;
-        expect( idxs[ 1 ] ).to.eql( 3 ) ;
-        expect( idxs[ 2 ] ).to.eql( 5 ) ;
-        expect( idxs[ 3 ] ).to.eql( 6 ) ;
-        // this way you know how many times its repeated
-        expect( idxs.length ).to.eql( 4 );
-
-      } ) ;
-    } ) ;
 } ) ;
