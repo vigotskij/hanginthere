@@ -78,6 +78,18 @@ window.Control = {
                           inMatches = this.matches.indexOf( input ) !== -1 ;
                       return ( inErrors || inMatches ) ;
                     } ,
+  requestWord :     function()
+                    {
+                      ;
+                    } ,
+  listeningForInput : function()
+                    {
+                      ;
+                    } ,
+  listeningForWord :  function()
+                    {
+                      ;
+                    } ,
   } ;
 
 function contains( element , collection )
