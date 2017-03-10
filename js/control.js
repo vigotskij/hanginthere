@@ -105,24 +105,9 @@ String.prototype.contains = function ( input )
     return contains( input , this ) ;
 };
 
-function occurrences( input , word , fn )
-{
-        let result = [] ;
-        let idx = -1 ;
-        while ( ( idx = word.indexOf( input , idx + 1) ) !== -1 )
-        {
-          result.push( idx ) ;
-          if ( typeof fn === 'function' )
-          {
-            fn( input , idx) ;
-          }
-        }
-        return result ;
-}
-
 String.prototype.occurrences = function ( input, fn )
 {
-    return occurrences( input , this , fn );
+    return occurrences( this, input , fn );
 }
 
 function found( letter , idx )

@@ -1,11 +1,11 @@
 'use strict';
 
-function occurrences(input, word, onMatch) {
+function occurrences(collection, item, onMatch) {
     let result = [],
-        idx = -1;
-    while ((idx = word.indexOf(input, idx + 1)) !== -1) {
-        result.push(idx);
-        (typeof fn === 'function') && onMatch(idx, input);
+        id     = -1;
+    while ((id = collection.indexOf(item, id + 1)) !== -1) {
+        result.push(id);
+        (typeof onMatch === 'function') && onMatch(id, item);
     }
     return result;
 }

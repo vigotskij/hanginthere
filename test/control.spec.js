@@ -1,4 +1,4 @@
-const expect = chai.expect;
+'use strict';
 
 describe("Control", function() {
   // aca van a ir los it( ...)
