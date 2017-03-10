@@ -1,6 +1,6 @@
 const MAIN = {
-  hooman : { } ,
-  control : { } ,
-  diccionario : { } ,
-  monigote : { } ,
+  hooman :        { } ,
+  control :       { } ,
+  diccionario :   { } ,
+  monigote :      { } ,
 } ;

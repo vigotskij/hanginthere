@@ -4,7 +4,7 @@ describe("Control", function() {
   // aca van a ir los it( ...)
   it("should create window.Control", function()
     {
-      expect(typeof window.Control).to.eql("object")
+      expect(typeof window.Control).to.eql("object") ;
     }
   ) ;
   describe( 'About secretWord' , function ()
