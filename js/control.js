@@ -8,7 +8,7 @@ var Control = {
                     {
                       let box = document.createElement( "div" ) ;
                       box.className = "letter" ;
-                      let after = document.querySelector( "body" ) ;
+                      let after = document.querySelector( "#main" ) ;
                       after.appendChild( box ) ;
                     } ,
 
@@ -49,12 +49,8 @@ var Control = {
                         return 'hey! already given!' ;
                       } else {
                         this.storeInput( input ) ;
-                        let that = this ;
-                        function fn( letter , id )
-                        {
-                          that.revealFromSecretWord( id ) ;
-                        }
-                        this.secretWord.occurrences( input , fn ) ;
+
+                        this.secretWord.occurrences( input , this.revealFromSecretWord.bind( this ) ) ;
                       }
                     } ,
 

@@ -12,6 +12,12 @@ if (typeof window === 'undefined') {
 
 describe("Control", function() {
   // aca van a ir los it( ...)
+  before( function( )
+    {
+      e = document.createElement("div") ;
+      e.id = "main" ;
+      document.querySelector("body").appendChild(e) ;
+    } ) ;
   it("should create window.Control", function()
     {
       expect(typeof window.Control).to.eql("object") ;
@@ -84,6 +90,5 @@ describe("Control", function() {
         expect( idxs.length ).to.eql( 4 );
 
       } ) ;
-
     } ) ;
 } ) ;
