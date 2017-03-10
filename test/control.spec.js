@@ -1,5 +1,5 @@
 'use strict';
-var e = document.createElement ;
+
 if (typeof window === 'undefined') {
     var chai = require('../bower_components/chai/chai');
     var expect = chai.expect;
@@ -14,7 +14,7 @@ describe("Control", function() {
   // aca van a ir los it( ...)
   before( function( )
     {
-      e = document.createElement("div") ;
+      var e = document.createElement("div") ;
       e.id = "main" ;
       document.querySelector("body").appendChild(e) ;
     } ) ;
