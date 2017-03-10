@@ -1,4 +1,4 @@
-window.Control = {
+var Control = {
   secretWord :      "" ,
 
   matches :         [ ] ,
@@ -101,22 +101,13 @@ String.prototype.contains = function ( input )
     return contains( input , this ) ;
 };
 
-function occurrences( input , word , fn )
-{
-        let result = [] ;
-        let idx = -1 ;
-        while ( ( idx = word.indexOf( input , idx + 1) ) !== -1 )
-        {
-          result.push( idx ) ;
-          if ( typeof fn === 'function' )
-          {
-            fn( idx , input) ;
-          }
-        }
-        return result ;
-}
-
 String.prototype.occurrences = function ( input, fn )
 {
-    return occurrences( input , this , fn );
+    return occurrences( this, input , fn );
+}
+
+if (typeof window !== 'undefined') {
+    window.Control = Control;
+} else {
+    module.exports = Control;
 }
