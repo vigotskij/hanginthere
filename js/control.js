@@ -1,3 +1,5 @@
+'use strict';
+
 var Control = {
   secretWord :      "" ,
 
