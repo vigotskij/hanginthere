@@ -1,4 +1,4 @@
-window.Control = {
+var Control = {
   secretWord :      "" ,
 
   matches :         [ ] ,
@@ -110,7 +110,8 @@ String.prototype.occurrences = function ( input, fn )
     return occurrences( this, input , fn );
 }
 
-function found( letter , idx )
-{
-  return ( letter + " is at " + idx + "<br>" ) ;
+if (typeof window !== 'undefined') {
+    window.Control = Control;
+} else {
+    module.exports = Control;
 }

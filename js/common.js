@@ -10,6 +10,6 @@ function occurrences(collection, item, onMatch) {
     return result;
 }
 
-if (typeof window === 'undefined') {
+if (typeof process !== 'undefined') {
     global.occurrences = occurrences;
 }

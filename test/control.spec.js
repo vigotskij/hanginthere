@@ -1,5 +1,15 @@
 'use strict';
 
+if (typeof window === 'undefined') {
+    var chai = require('../bower_components/chai/chai');
+    var expect = chai.expect;
+    require('../node_modules/mocha-jsdom')({skipWindowCheck:true});
+
+    require('../js/common.js');
+    global.Control = require('../js/control.js');
+    global.window = {Control: Control};
+}
+
 describe("Control", function() {
   // aca van a ir los it( ...)
   it("should create window.Control", function()
@@ -74,14 +84,6 @@ describe("Control", function() {
         expect( idxs.length ).to.eql( 4 );
 
       } ) ;
-      it ( 'Should... something' , function( )
-      {
-        expect( contains( "a" , "pepe" ) ).to.eql( false ) ;
-        expect( contains( "p" , "pepe" ) ).to.eql( true ) ;
-      } ) ;
-      it ( 'Should write the item at pos ' ,  function()
-    {
-      expect( found( "s" , 2 ) ).to.eql( "s is at 2<br>" ) ;
-    } ) ;
+
     } ) ;
 } ) ;

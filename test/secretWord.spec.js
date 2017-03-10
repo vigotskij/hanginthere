@@ -1,8 +1,9 @@
 'use strict';
 
-if (typeof window === 'undefined') {
+if (typeof require !== 'undefined') {
+    var expect = require('chai').expect;
+
     require('../js/common.js');
-    var expect = require('../bower_components/chai/chai').expect;
     var SecretWord = require('../js/secretWord.js');
 }
 

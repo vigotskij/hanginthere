@@ -1,9 +1,8 @@
 'use strict';
 
-if (typeof window === 'undefined') {
+if (typeof module !== 'undefined') {
     module.exports = SecretWord;
 }
-
 
 function SecretWord(word) {
     var hideChar = arguments[1] || '*';

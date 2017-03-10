@@ -1,3 +1,6 @@
+if (require instanceof Function) {
+    var chai = require('chai');
+}
 const expect = chai.expect;
 
 describe("Monigote", function() {
