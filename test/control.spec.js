@@ -1,5 +1,5 @@
 'use strict';
-
+var e = document.createElement ;
 if (typeof window === 'undefined') {
     var chai = require('../bower_components/chai/chai');
     var expect = chai.expect;
