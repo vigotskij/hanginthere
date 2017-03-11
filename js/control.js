@@ -56,11 +56,12 @@ var Control = {
                       }
                     } ,
 
-  resetControl :    function ()
+  resetGame :    function ()
                     {
                       this.secretWord = "" ;
                       this.matches = [] ;
                       this.errors = [] ;
+                      Monigote.errors = 0 ;
                     } ,
 
   storeInput :      function ( input )
@@ -70,6 +71,7 @@ var Control = {
                         this.matches.unshift( input ) ;
                       } else {
                         this.errors.unshift( input ) ;
+                        this.errorToMonigote() ;
                       }
                     } ,
 
@@ -79,6 +81,10 @@ var Control = {
                           inErrors  = this.errors.indexOf( input ) !== -1 ,
                           inMatches = this.matches.indexOf( input ) !== -1 ;
                       return ( inErrors || inMatches ) ;
+                    } ,
+  errorToMonigote : function()
+                    {
+                      Monigote.errors++ ;
                     } ,
   requestWord :     function()
                     {
