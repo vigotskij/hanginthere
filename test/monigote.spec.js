@@ -1,3 +1,6 @@
+
+'use strict'
+
 if (require instanceof Function) {
     var chai = require('chai');
 }
