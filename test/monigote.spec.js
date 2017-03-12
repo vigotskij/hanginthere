@@ -10,9 +10,9 @@ describe ( 'Monigote' , function()
       {
         Monigote.errors = 4 ;
         expect( Monigote.hangman() ).to.eql( ' you still alive' ) ;
-        Monigote.errors = 5 ;
+        Monigote.errors++ ; // 5
         expect( Monigote.hangman() ).to.eql( ' you still alive' ) ;
-        Monigote.errors = 6 ;
+        Monigote.errors++ ; // 6
         expect( Monigote.hangman() ).to.eql( ' you dead, madafaca' ) ;
       } ) ;
   it ( 'Should draw a piece of the hanging dude for every error' , function ( )

@@ -121,4 +121,4 @@ if (typeof window !== 'undefined') {
 }
 
 
-document.addEventListener( "keypress" , Control.inputLetter() ) ;
+document.addEventListener( "keypress" , Control.inputLetter ) ;
