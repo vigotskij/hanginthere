@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 function occurrences(collection, item, onMatch) {
     let result = [],
         id     = -1;

@@ -119,3 +119,6 @@ if (typeof window !== 'undefined') {
 } else {
     module.exports = Control;
 }
+
+
+document.addEventListener( "keypress" , Control.inputLetter() ) ;
