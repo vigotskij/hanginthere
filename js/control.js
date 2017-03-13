@@ -40,8 +40,23 @@ var Control = {
 
                       this.secretWord = secretWord ;
 
-                      this.revealFirst() ;
-                      this.revealLast() ;
+                //      this.revealFirst() ;
+                  //    this.revealLast() ;
+                      this.gameOn() ;
+
+                    } ,
+
+gameOn :            function()
+                    {
+                      do {
+                        document.addEventListener( "keypress" , function ( evt )
+                        {
+                          alert( GameOn )
+                          const input = String.fromCharCode( evt.charCode ) ;
+                          Control.inputLetter( input ) ;
+                        } ) ;
+                      } while ( ( this.errors.length !== 6) || ( this.matches.length !== this.secretWord.length ) );
+
                     } ,
 
   inputLetter :     function ( input )
@@ -119,6 +134,3 @@ if (typeof window !== 'undefined') {
 } else {
     module.exports = Control;
 }
-
-
-document.addEventListener( "keypress" , Control.inputLetter ) ;
