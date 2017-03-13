@@ -48,15 +48,13 @@ var Control = {
 
 gameOn :            function()
                     {
+                      document.addEventListener( "keypress" , function( evt) {
                       do {
-                        document.addEventListener( "keypress" , function ( evt )
-                        {
                           alert( GameOn )
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                        } ) ;
-                      } while ( ( this.errors.length !== 6) || ( this.matches.length !== this.secretWord.length ) );
-
+                      } while ( ( this.errors.length !== 6) || ( this.matches.length !== this.secretWord.length ) ) ;
+                    } ) ;
                     } ,
 
   inputLetter :     function ( input )
