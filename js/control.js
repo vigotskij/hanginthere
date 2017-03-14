@@ -48,12 +48,16 @@ var Control = {
 
 gameOn :            function()
                     {
-                      document.addEventListener( "keypress" , function( evt) {
-                      do {
-                          alert( GameOn )
+                      let that = this ;
+                      document.addEventListener( "keypress" , function( evt ) {
+                          alert( "GameOn" ) ;
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                      } while ( ( this.errors.length !== 6) || ( this.matches.length !== this.secretWord.length ) ) ;
+                      if ( ( that.errors.length === 6) || ( that.matches.length === that.secretWord.length ) )
+                      {
+                        alert( "GameOff" ) ;
+                        that.resetGame() ;
+                      }
                     } ) ;
                     } ,
 
