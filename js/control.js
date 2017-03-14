@@ -50,12 +50,12 @@ gameOn :            function()
                     {
                       let that = this ;
                       document.addEventListener( "keypress" , function( evt ) {
-                          alert( "GameOn" ) ;
+                      //    alert( "GameOn" ) ;
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
                       if ( ( that.errors.length === 6) || ( that.matches.length === that.secretWord.length ) )
                       {
-                        alert( "GameOff" ) ;
+                    //    alert( "GameOff" ) ;
                         that.resetGame() ;
                       }
                     } ) ;
