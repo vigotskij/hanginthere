@@ -48,6 +48,11 @@ describe("Control", function() {
           expect( Control.secretWord.contains( "f" ) ).to.eql( false ) ;
         }
     ) ;
+    it ( 'Should win the game once secretWord is full revealed' , function ( )
+        {
+          // acá va el test, pero te la debo ;
+        }
+    ) ;
   } ) ;
 
   describe ( 'About input and inputs' , function()
