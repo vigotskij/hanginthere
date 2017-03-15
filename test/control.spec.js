@@ -51,6 +51,10 @@ describe("Control", function() {
     it ( 'Should win the game once secretWord is full revealed' , function ( )
         {
           // acá va el test, pero te la debo ;
+          Control.init("barata") ;
+          Control.inputLetter( "a" ) ;
+          expect( Control.control ).to.eql( 3 ) ;
+          
         }
     ) ;
   } ) ;
