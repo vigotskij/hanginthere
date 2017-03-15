@@ -57,17 +57,7 @@ describe("Control", function() {
 
         }
     ) ;
-    it ( 'Should clean everything after finish the game' , function ( )
-        {
-          Control.resetGame();
-          let boxes002 = document.querySelectorAll(".letter") ;
-          expect( Control.secretWord ).to.eql( "" ) ;
-          expect( Control.matches.length ).to.eql( 0 ) ;
-          expect( Control.errors.length ).to.eql( 0 ) ;
-          expect( Control.toWin ).to.eql( 0 ) ;
-          expect( boxes002.length ).to.eql( 0 ) ;
-        }
-    ) ;
+
   } ) ;
 
   describe ( 'About input and inputs' , function()
@@ -96,6 +86,53 @@ describe("Control", function() {
         expect( Control.errors[ 0 ] ).to.eql( "f" ) ;
       } ) ;
     } ) ;
+
+  describe ( 'About limits of the game' , function(){
+    it ( 'Should warn when errors reach its limit' , function ( )
+      {
+        Control.errors.length = 4 ;
+        expect( Control.hangman() ).to.eql( ' you still alive' ) ;
+        Control.errors.length++ ; // 5
+        expect( Control.hangman() ).to.eql( ' you still alive' ) ;
+        Control.errors.length++ ; // 6
+        expect( Control.hangman() ).to.eql( ' you dead, madafaca' ) ;
+      } ) ;
+    it ( 'Should clean everything after finish the game' , function ( )
+        {
+          Control.resetGame();
+          let boxes002 = document.querySelectorAll(".letter") ;
+          expect( Control.secretWord ).to.eql( "" ) ;
+          expect( Control.matches.length ).to.eql( 0 ) ;
+          expect( Control.errors.length ).to.eql( 0 ) ;
+          expect( Control.toWin ).to.eql( 0 ) ;
+          expect( boxes002.length ).to.eql( 0 ) ;
+        }
+    ) ;
+    it ( 'Should draw a piece of the hanging dude for every error' , function ( )
+      {
+        Control.errors.length = 0 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 1 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 2 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 3 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 4 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 5 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+        Control.errors.length = 6 ;
+        Control.monigoteDraw() ;
+        expect().to.eql() ;
+      } ) ;
+  } ) ;
 
 
 

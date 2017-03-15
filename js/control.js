@@ -91,7 +91,6 @@ gameOn :            function()
                       this.errors = [] ;
                       this.toWin = 0 ;
                       this.cleanBoxes() ;
-                      Monigote.errors = 0 ;
                     } ,
 
   storeInput :      function ( input )
@@ -101,7 +100,6 @@ gameOn :            function()
                         this.matches.unshift( input ) ;
                       } else {
                         this.errors.unshift( input ) ;
-                        this.errorToMonigote() ;
                       }
                     } ,
 
@@ -112,9 +110,20 @@ gameOn :            function()
                           inMatches = this.matches.indexOf( input ) !== -1 ;
                       return ( inErrors || inMatches ) ;
                     } ,
-  errorToMonigote : function()
+  monigoteDraw :    function()
                     {
-                      Monigote.errors++ ;
+                      // acá si que no tengo idea de cómo hacer, pero tiene que
+                      // dibujar con cada incremento de this.errors.
+                      ;
+                    } ,
+  hangman :         function()
+                    {
+                      // esto deberìa leer activamente errors, dentro de Monigote,
+                      // y actuar según la cantidad de errores.
+                      if ( this.errors.length < 6 ) { return ' you still alive' ; }
+                      else { this.resetGame() ; return ' you dead, madafaca' ; }
+                      // antes de llamar a resetGame, bien podría salir un alert,
+                      // o algo por el estilo... para pensarlo.
                     } ,
   requestWord :     function()
                     {
