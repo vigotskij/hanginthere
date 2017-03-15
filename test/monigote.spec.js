@@ -17,7 +17,27 @@ describe ( 'Monigote' , function()
       } ) ;
   it ( 'Should draw a piece of the hanging dude for every error' , function ( )
     {
-
+        Monigote.errors = 0 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 1 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 2 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 3 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 4 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 5 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
+        Monigote.errors = 6 ;
+        Monigote.draw() ;
+        expect().to.eql() ;
     } ) ;
 
     describe ( 'About interaction with Control' , function ()

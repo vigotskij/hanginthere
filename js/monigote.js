@@ -18,3 +18,8 @@
                   } ,
 
 }
+
+
+// en realidad, empiezo a pensar que monigote no tiene mucho sentido como
+// módulo aparte. Creo que mañana paso estas dos funciones a Control
+// con sus respectivos tests, y eliminaré Monigote.errors

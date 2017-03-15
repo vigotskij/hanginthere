@@ -3,6 +3,7 @@
 var Control = {
   secretWord :      "" ,
 
+  toWin :           0 ,
   matches :         [ ] ,
   errors :          [ ] ,
 
@@ -31,6 +32,16 @@ var Control = {
                     {
                       this.revealFromSecretWord( this.secretWord.length - 1 )
                     } ,
+  cleanBoxes :      function ()
+                    {
+                      const mainDiv = document.querySelector( "#main" ) ;
+                      const boxes = document.querySelectorAll( ".letter" ) ;
+
+                      for ( let idx = 0 ; idx < boxes.length ; idx++ )
+                      {
+                        mainDiv.removeChild( boxes[ idx ] ) ;
+                      }
+                    } ,
   init :            function ( secretWord )
                     {
                       for ( let idx = 0 ; idx < secretWord.length ; idx++ )
@@ -53,7 +64,7 @@ gameOn :            function()
                       //    alert( "GameOn" ) ;
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                      if ( ( that.errors.length === 6) || ( that.matches.length === that.secretWord.length ) )
+                      if ( ( that.errors.length === 6) || ( that.toWin === that.secretWord.length ) )
                       {
                     //    alert( "GameOff" ) ;
                         that.resetGame() ;
@@ -78,6 +89,8 @@ gameOn :            function()
                       this.secretWord = "" ;
                       this.matches = [] ;
                       this.errors = [] ;
+                      this.toWin = 0 ;
+                      this.cleanBoxes() ;
                       Monigote.errors = 0 ;
                     } ,
 

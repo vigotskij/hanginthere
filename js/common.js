@@ -5,6 +5,7 @@ function occurrences(collection, item, onMatch) {
         id     = -1;
     while ((id = collection.indexOf(item, id + 1)) !== -1) {
         result.push(id);
+        Control.toWin++ ;
         (typeof onMatch === 'function') && onMatch(id, item);
     }
     return result;

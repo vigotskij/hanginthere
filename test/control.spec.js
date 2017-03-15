@@ -50,11 +50,22 @@ describe("Control", function() {
     ) ;
     it ( 'Should win the game once secretWord is full revealed' , function ( )
         {
-          // acá va el test, pero te la debo ;
+          Control.toWin = 0 ;
           Control.init("barata") ;
           Control.inputLetter( "a" ) ;
-          expect( Control.control ).to.eql( 3 ) ;
-          
+          expect( Control.toWin ).to.eql( 3 ) ;
+
+        }
+    ) ;
+    it ( 'Should clean everything after finish the game' , function ( )
+        {
+          Control.resetGame();
+          let boxes002 = document.querySelectorAll(".letter") ;
+          expect( Control.secretWord ).to.eql( "" ) ;
+          expect( Control.matches.length ).to.eql( 0 ) ;
+          expect( Control.errors.length ).to.eql( 0 ) ;
+          expect( Control.toWin ).to.eql( 0 ) ;
+          expect( boxes002.length ).to.eql( 0 ) ;
         }
     ) ;
   } ) ;
