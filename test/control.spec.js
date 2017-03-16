@@ -21,9 +21,9 @@ describe("Control", function() {
       document.querySelector( "body" ).appendChild( e ) ;
       document.querySelector( "body" ).appendChild( f ) ;
     } ) ;
-    beforeEach( function () {
-      Control.resetGame() ;
-    } ) ;
+  //  beforeEach( function () {
+    //  Control.resetGame() ;
+//    } ) ;
   it("should create window.Control", function()
     {
       expect(typeof window.Control).to.eql("object") ;
@@ -116,27 +116,26 @@ describe("Control", function() {
     ) ;
     it ( 'Should draw a piece of the hanging dude for every error' , function ( )
       {
-        Control.errors.length = 0 ;
-        Control.monigoteDraw() ;
-        expect().to.eql() ;
+        Control.init( "camarao" ) ;
+        let gallow = document.querySelectorAll( ".parts" ) ;
         Control.errors.length = 1 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 0 ] ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 2 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 1 ] ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 3 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 2 ] ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 4 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 3 ] ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 5 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 4 ] ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 6 ;
         Control.monigoteDraw() ;
-        expect().to.eql() ;
+        expect( gallow[ 5 ] ).to.eql( '<div class="parts">x</div>' ) ;
       } ) ;
   } ) ;
 

@@ -23,7 +23,7 @@ var Control = {
                     } ,
   fillBox :         function (idx, letter , classDiv )
                     {
-                    var box = document.querySelectorAll( classDiv )[idx];
+                    var box = document.querySelectorAll( classDiv )[idx] ;
                     box.innerText = letter ;
                     } ,
   revealFromSecretWord : function ( idx )
@@ -42,6 +42,7 @@ var Control = {
                     {
                       const mainDiv = document.querySelector( "#main" ) ;
                       const boxes = document.querySelectorAll( ".letter" ) ;
+                      const gallowDiv = document.querySelector( "#gallow" ) ;
                       const parts = document.querySelectorAll( ".parts" ) ;
 
                       for ( let idx = 0 ; idx < boxes.length ; idx++ )
@@ -50,7 +51,7 @@ var Control = {
                       }
                       for (let idx = 0 ; idx < parts.length ; idx++ )
                       {
-                        mainDiv.removeChild( parts[ idx ] ) ;
+                        gallowDiv.removeChild( parts[ idx ] ) ;
                       }
                     } ,
   init :            function ( secretWord )
@@ -74,15 +75,18 @@ var Control = {
 
 gameOn :            function()
                     {
-                    //  let that = this ;
                       document.addEventListener( "keypress" , function( evt ) {
-                      //    alert( "GameOn" ) ;
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                      if ( ( that.errors.length === 6) || ( this.toWin === this.secretWord.length ) )
+                      if ( that.errors.length === 6 )
                       {
-                    //    alert( "GameOff" ) ;
+                        alert( "yo, you r dead!" ) ;
                         this.resetGame() ;
+                      } else if ( this.toWin === this.secretWord.length ) {
+                        alert( "yo, you r saved!") ;
+                        this.resetGame() ;
+                      } else {
+                        ;
                       }
                     }.bind( this ) ) ;
                     } ,
@@ -128,29 +132,7 @@ gameOn :            function()
                     } ,
   monigoteDraw :    function()
                     {
-                      switch ( this.errors.length ) {
-                        case 0 :
-                          ;
-                          break;
-                        case 1 :
-                          this.fillBox( 1 , "x" , ".parts" ) ;
-                          break;
-                        case 2 :
-                          this.fillBox( 2 , "x" , ".parts" ) ;
-                          break;
-                        case 3 :
-                          this.fillBox( 3 , "x" , ".parts" ) ;
-                          break;
-                        case 4 :
-                          this.fillBox( 4 , "x" , ".parts" ) ;
-                          break;
-                        case 5 :
-                          this.fillBox( 5 , "x" , ".parts" ) ;
-                          break;
-                        case 6 :
-                          this.fillBox( 6 , "x" , ".parts" ) ;
-                          break;
-                      }
+                      this.fillBox( this.errors.length - 1 , "x" , ".parts" ) ;
                     } ,
   hangman :         function()
                     {
