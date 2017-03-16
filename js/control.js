@@ -14,15 +14,21 @@ var Control = {
                       let after = document.querySelector( "#main" ) ;
                       after.appendChild( box ) ;
                     } ,
-
-  fillBox :         function (idx, letter)
+  createGallowBox : function ()
                     {
-                    var box = document.querySelectorAll(".letter")[idx];
+                      let box = document.createElement( "div" ) ;
+                      box.className = "parts" ;
+                      let after = document.querySelector( "#gallow" ) ;
+                      after.appendChild( box ) ;
+                    } ,
+  fillBox :         function (idx, letter , classDiv )
+                    {
+                    var box = document.querySelectorAll( classDiv )[idx];
                     box.innerText = letter ;
                     } ,
   revealFromSecretWord : function ( idx )
                     {
-                      this.fillBox( idx , this.secretWord[ idx ] ) ;
+                      this.fillBox( idx , this.secretWord[ idx ] , ".letter" ) ;
                     } ,
   revealFirst :     function()
                     {
@@ -36,10 +42,15 @@ var Control = {
                     {
                       const mainDiv = document.querySelector( "#main" ) ;
                       const boxes = document.querySelectorAll( ".letter" ) ;
+                      const parts = document.querySelectorAll( ".parts" ) ;
 
                       for ( let idx = 0 ; idx < boxes.length ; idx++ )
                       {
                         mainDiv.removeChild( boxes[ idx ] ) ;
+                      }
+                      for (let idx = 0 ; idx < parts.length ; idx++ )
+                      {
+                        mainDiv.removeChild( parts[ idx ] ) ;
                       }
                     } ,
   init :            function ( secretWord )
@@ -47,6 +58,10 @@ var Control = {
                       for ( let idx = 0 ; idx < secretWord.length ; idx++ )
                       {
                         this.createEmptyBox( ) ;
+                      }
+                      for ( let idx = 0 ; idx < 6 ; idx++ )
+                      {
+                        this.createGallowBox() ;
                       }
 
                       this.secretWord = secretWord ;
@@ -59,17 +74,17 @@ var Control = {
 
 gameOn :            function()
                     {
-                      let that = this ;
+                    //  let that = this ;
                       document.addEventListener( "keypress" , function( evt ) {
                       //    alert( "GameOn" ) ;
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                      if ( ( that.errors.length === 6) || ( that.toWin === that.secretWord.length ) )
+                      if ( ( that.errors.length === 6) || ( this.toWin === this.secretWord.length ) )
                       {
                     //    alert( "GameOff" ) ;
-                        that.resetGame() ;
+                        this.resetGame() ;
                       }
-                    } ) ;
+                    }.bind( this ) ) ;
                     } ,
 
   inputLetter :     function ( input )
@@ -100,6 +115,7 @@ gameOn :            function()
                         this.matches.unshift( input ) ;
                       } else {
                         this.errors.unshift( input ) ;
+                        this.monigoteDraw() ;
                       }
                     } ,
 
@@ -112,9 +128,29 @@ gameOn :            function()
                     } ,
   monigoteDraw :    function()
                     {
-                      // acá si que no tengo idea de cómo hacer, pero tiene que
-                      // dibujar con cada incremento de this.errors.
-                      ;
+                      switch ( this.errors.length ) {
+                        case 0 :
+                          ;
+                          break;
+                        case 1 :
+                          this.fillBox( 1 , "x" , ".parts" ) ;
+                          break;
+                        case 2 :
+                          this.fillBox( 2 , "x" , ".parts" ) ;
+                          break;
+                        case 3 :
+                          this.fillBox( 3 , "x" , ".parts" ) ;
+                          break;
+                        case 4 :
+                          this.fillBox( 4 , "x" , ".parts" ) ;
+                          break;
+                        case 5 :
+                          this.fillBox( 5 , "x" , ".parts" ) ;
+                          break;
+                        case 6 :
+                          this.fillBox( 6 , "x" , ".parts" ) ;
+                          break;
+                      }
                     } ,
   hangman :         function()
                     {

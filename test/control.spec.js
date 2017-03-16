@@ -14,9 +14,15 @@ describe("Control", function() {
   // aca van a ir los it( ...)
   before( function( )
     {
-      var e = document.createElement("div") ;
+      const e = document.createElement("div") ;
       e.id = "main" ;
-      document.querySelector("body").appendChild(e) ;
+      const f = document.createElement("div") ;
+      f.id = "gallow" ;
+      document.querySelector( "body" ).appendChild( e ) ;
+      document.querySelector( "body" ).appendChild( f ) ;
+    } ) ;
+    beforeEach( function () {
+      Control.resetGame() ;
     } ) ;
   it("should create window.Control", function()
     {
