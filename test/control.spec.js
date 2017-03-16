@@ -120,22 +120,22 @@ describe("Control", function() {
         let gallow = document.querySelectorAll( ".parts" ) ;
         Control.errors.length = 1 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 0 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 0 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 2 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 1 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 1 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 3 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 2 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 2 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 4 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 3 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 3 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 5 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 4 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 4 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
         Control.errors.length = 6 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 5 ] ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 5 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
       } ) ;
   } ) ;
 

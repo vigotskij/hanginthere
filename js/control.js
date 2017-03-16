@@ -78,17 +78,17 @@ gameOn :            function()
                       document.addEventListener( "keypress" , function( evt ) {
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
-                      if ( that.errors.length === 6 )
-                      {
-                        alert( "yo, you r dead!" ) ;
-                        this.resetGame() ;
-                      } else if ( this.toWin === this.secretWord.length ) {
-                        alert( "yo, you r saved!") ;
-                        this.resetGame() ;
-                      } else {
-                        ;
-                      }
-                    }.bind( this ) ) ;
+                          if ( this.errors.length === 6 )
+                          {
+                            alert( "yo, you r dead!" ) ;
+                            this.resetGame() ;
+                          } else if ( this.toWin === this.secretWord.length ) {
+                            alert( "yo, you r saved!") ;
+                            this.resetGame() ;
+                          } else {
+                            ;
+                          }
+                        }.bind( this ) ) ;
                     } ,
 
   inputLetter :     function ( input )
@@ -144,14 +144,6 @@ gameOn :            function()
                       // o algo por el estilo... para pensarlo.
                     } ,
   requestWord :     function()
-                    {
-                      ;
-                    } ,
-  listeningForInput : function()
-                    {
-                      ;
-                    } ,
-  listeningForWord :  function()
                     {
                       ;
                     } ,
