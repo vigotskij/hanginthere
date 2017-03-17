@@ -1,0 +1,44 @@
+body {
+  background-color: rgba(51, 193, 147, 0.58) ;
+  text-align: center ;
+}
+
+div {
+  background-color: lightblue ;
+  border-radius: 5px ;
+  border-width: 2px ;
+  border-color: black ;
+  width: 50% ;
+  margin-left: 25% ;
+  height: auto ;
+}
+
+div#game {
+  float: center ;
+}
+
+div#main {
+  display: inline-block ;
+  float: right;
+}
+div.boxes {
+  border-radius: 100% ;
+}
+
+
+div#gallow{
+  display: inline-block ;
+  float: left;
+  margin-left: 0% ;
+}
+div.parts {
+
+  border-color: red ;
+  border-radius: 100% ;
+  background-color: white ;
+}
+
+div#bottom {
+  margin-top: 15% ;
+
+}

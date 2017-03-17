@@ -6,15 +6,23 @@
   <script src="./js/secretWord.js"></script>
   <script src="./js/control.js"></script>
   <script src="./js/main.js"></script>
-  <style src="./css/styles.css"></style>
+  <link rel="stylesheet" type="text/css" href="./css/styles.css"></link>
 </head>
+
 <body>
   <div id = game>
+    <div>
+      Press any key to play!<br>
+    </div>
 
     <div id = "main"></div>
     <div id = "gallow"></div>
-
+    <br>
+    <br>
     <script>Control.init( "verdura" )</script>
-    <div>Press any key to play</div>
+  </div>
+  <div id = "bottom">
+    You have 6 chances to win!<br>
+    The word you must guess has <script>document.write( Control.secretWord.length );</script> characters!
   </div>
 </body>

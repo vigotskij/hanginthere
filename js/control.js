@@ -80,10 +80,10 @@ gameOn :            function()
                           Control.inputLetter( input ) ;
                           if ( this.errors.length === 6 )
                           {
-                            alert( "yo, you r dead!" ) ;
+                            alert( "yo, you r dead! The word was: " + this.secretWord + "." ) ;
                             this.resetGame() ;
                           } else if ( this.toWin === this.secretWord.length ) {
-                            alert( "yo, you r saved!") ;
+                            alert( "yo, you r saved! The word was: " + this.secretWord + "." ) ;
                             this.resetGame() ;
                           } else {
                             ;
