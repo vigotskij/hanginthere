@@ -70,7 +70,7 @@ var Control = {
                 //      this.revealFirst() ;
                   //    this.revealLast() ;
                       this.gameOn() ;
-
+                      return ;
                     } ,
 
 gameOn :            function()
@@ -80,11 +80,14 @@ gameOn :            function()
                           Control.inputLetter( input ) ;
                           if ( this.errors.length === 6 )
                           {
-                            alert( "yo, you r dead! The word was: " + this.secretWord + "." ) ;
-                            this.resetGame() ;
+                            const gallowDiv = document.querySelector( "#gallow" ) ;
+                            gallowDiv.innerHTML = "<div class ='parts'>You lose!</div>" ;
+                            document.removeEventListener( "keypress") ;
                           } else if ( this.toWin === this.secretWord.length ) {
-                            alert( "yo, you r saved! The word was: " + this.secretWord + "." ) ;
-                            this.resetGame() ;
+
+                            const mainDiv = document.querySelector( "#main" ) ;
+                            mainDiv.innerHTML = "<div class = 'letter'>You won!</div>" ;
+                            document.removeEventListener( "keypress") ;
                           } else {
                             ;
                           }
@@ -98,7 +101,6 @@ gameOn :            function()
                         return 'hey! already given!' ;
                       } else {
                         this.storeInput( input ) ;
-
                         this.secretWord.occurrences( input , this.revealFromSecretWord.bind( this ) ) ;
                       }
                     } ,
