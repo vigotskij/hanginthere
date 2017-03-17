@@ -6,36 +6,43 @@ body {
 div {
   background-color: lightblue ;
   border-radius: 5px ;
-  border-width: 2px ;
-  border-color: black ;
-  width: 50% ;
-  margin-left: 25% ;
+  border: 1px solid black ;
   height: auto ;
 }
 
 div#game {
-  float: center ;
+  width: 50% ;
+  margin: auto ;
+  min-height: 150px ;
 }
 
 div#main {
-  display: inline-block ;
   float: right;
 }
-div.boxes {
-  border-radius: 100% ;
+div.letter {
+  display: inline-block ;
+  min-width: 1em ;
+  min-height: 1em ;
+  border: 1px solid black ;
+  margin: 0.1em ;
+  padding: 1em ;
+  text-align: center ;
 }
 
 
 div#gallow{
-  display: inline-block ;
+  margin: auto;
   float: left;
-  margin-left: 0% ;
-}
-div.parts {
+  }
 
-  border-color: red ;
-  border-radius: 100% ;
-  background-color: white ;
+div.parts {
+  display: inline-block ;
+  min-width: 1em ;
+  min-height: 1em ;
+  border: 1px solid black ;
+  margin: 0.1em ;
+  padding: 1em ;
+  text-align: center ;
 }
 
 div#bottom {
