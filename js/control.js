@@ -75,23 +75,30 @@ var Control = {
 
 gameOn :            function()
                     {
-                      document.addEventListener( "keypress" , function( evt ) {
+                      function evtListener( evt ) {
                           const input = String.fromCharCode( evt.charCode ) ;
                           Control.inputLetter( input ) ;
                           if ( this.errors.length === 6 )
                           {
                             const gallowDiv = document.querySelector( "#gallow" ) ;
                             gallowDiv.innerHTML = "<div class ='parts'>You lose!</div>" ;
-                            document.removeEventListener( "keypress") ;
-                          } else if ( this.toWin === this.secretWord.length ) {
+                        //    document.removeEventListener( "keypress", evtListener() ) ;
 
+                          } else if ( this.toWin === this.secretWord.length ) {
                             const mainDiv = document.querySelector( "#main" ) ;
                             mainDiv.innerHTML = "<div class = 'letter'>You won!</div>" ;
-                            document.removeEventListener( "keypress") ;
+                        //    document.removeEventListener( "keypress", evtListener() ) ;
                           } else {
                             ;
                           }
-                        }.bind( this ) ) ;
+                        }
+                      document.addEventListener( "keypress" , evtListener.bind( this ) ) ;
+                      if ( this.errors.length === 6 || this.secretWord.length === this.toWin )
+                      {
+                        document.removeEventListener( "keypress" , evtListener() ) ;
+                      }
+
+
                     } ,
 
   inputLetter :     function ( input )
