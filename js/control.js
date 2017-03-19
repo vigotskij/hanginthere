@@ -6,6 +6,8 @@ var Control = {
   toWin :           0 ,
   matches :         [ ] ,
   errors :          [ ] ,
+  forbiden :        [ "1" , "2" , "3" , "4" ,"5" , "6" , "7" , "8" , "9" , "0" ,
+                      "" , "<" , ">"] ,
 
   createEmptyBox :  function ()
                     {
@@ -63,12 +65,31 @@ var Control = {
                       this.gameOn() ;
                       return ;
                     } ,
+evtListener :       function ( evt )
+                    {
+                      const input = String.fromCharCode( evt.charCode ).toLowerCase() ;
 
+                      Control.inputLetter( input ) ;
+                      if ( this.errors.length === 6 )
+                      {
+                        const gallowDiv = document.querySelector( "#gallow" ) ;
+                        gallowDiv.innerHTML = "<div class ='parts'>You lose!</div>" ;
+                        document.removeEventListener( "keypress", this.evtListener() ) ;
+
+                      } else if ( this.toWin === this.secretWord.length ) {
+                        const mainDiv = document.querySelector( "#main" ) ;
+                        mainDiv.innerHTML = "<div class = 'letter'>You won!</div>" ;
+                        document.removeEventListener( "keypress", this.evtListener ) ;
+                      } else {
+                        ;
+                      }
+                    } ,
 gameOn :            function()
                     {
                       let evtListener = function ( evt )
                       {
-                        const input = String.fromCharCode( evt.charCode ) ;
+                        const input = String.fromCharCode( evt.charCode ).toLowerCase() ;
+
                         Control.inputLetter( input ) ;
                         if ( this.errors.length === 6 )
                         {
@@ -122,8 +143,9 @@ gameOn :            function()
                     {
                       let
                           inErrors  = this.errors.indexOf( input ) !== -1 ,
-                          inMatches = this.matches.indexOf( input ) !== -1 ;
-                      return ( inErrors || inMatches ) ;
+                          inMatches = this.matches.indexOf( input ) !== -1 ,
+                          inForbiden = this.forbiden.indexOf( input ) !== -1 ;
+                      return ( inErrors || inMatches || inForbiden ) ;
                     } ,
   monigoteDraw :    function()
                     {

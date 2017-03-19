@@ -94,15 +94,14 @@ describe("Control", function() {
     } ) ;
 
   describe ( 'About limits of the game' , function(){
-    it ( 'Should warn when errors reach its limit' , function ( )
-      {
-        Control.errors.length = 4 ;
-        expect( Control.hangman() ).to.eql( ' you still alive' ) ;
-        Control.errors.length++ ; // 5
-        expect( Control.hangman() ).to.eql( ' you still alive' ) ;
-        Control.errors.length++ ; // 6
-        expect( Control.hangman() ).to.eql( ' you dead, madafaca' ) ;
-      } ) ;
+    it ( 'Should take lower and upper case letters as same' , function ( )
+        {
+            Control.init( "coliflor" ) ;
+            Control.evtListener( 65 ) ;
+            expect( Control.alreadyGiven( "a" ) ).to.eql( true ) ;
+
+        }
+      ) ;
     it ( 'Should clean everything after finish the game' , function ( )
         {
           Control.resetGame();
