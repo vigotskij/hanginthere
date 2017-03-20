@@ -1,11 +1,11 @@
 'use strict';
 
-var Diccionary = {
+window.Dictionary = new Array (
 
-/*randomWord :  function(){
-                const word = Diccionary[ Math.random().toInt ]
+                function randomWord(){
+                const word = Dictionary[ Math.floor( Math.random() * ( Dictionary.length - 1 ) ) ] ;
 
                 return word ;
-              } ,
- */
-}
+              }
+
+)
