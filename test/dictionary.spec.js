@@ -5,12 +5,12 @@ describe ( "About dictionary" , function ()
   {
     it ( 'Should create window.Dictionary' , function ()
       {
-        expect( typeof window.Dictionary ).to.eql( "object" ) ;
+        expect( Object.prototype.toString.call( Dictionary ) ).to.eql( '[object Array]' ) ;
       }
     ) ;
     it ( 'Should give random word' , function ()
       {
-        ;
+        expect().to.eql() ;
       }
     ) ;
   } ) ;
