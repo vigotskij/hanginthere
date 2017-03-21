@@ -2,12 +2,12 @@
 let Dictionary = [] ;
 
 
- Dictionary.push ( "agua" ,	"hojas" ,	"persona" ,"botella","hombre","petroleo","cafetera",
-   "lapicera","piso","caramelos","lentejas","plato",
-   "cartas","letra","playa","castillo","libros","pradera",
+ Dictionary.push ( "agua" ,	"hoja" ,	"persona" ,"botella","hombre","petroleo","cafetera",
+   "lapicera","piso","caramelo","lentejas","plato",
+   "carta","letra","playa","castillo","libro","pradera",
    "chocolate","lima","radio","computadora","lima","remate",
    "crema","luz","remera","crema","mapa","rey","debate","mono",
-   "rucula","desodorante","montes","servilleta","diarios",
+   "rucula","desodorante","monte","servilleta","diario",
    "parlante","teatro","diputado","parlante","tecla",
    "estadista","perfume","templo","gobierno","perro","zapato","percha" ) ;
 

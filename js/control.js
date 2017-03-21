@@ -94,12 +94,12 @@ gameOn :            function()
                         if ( this.errors.length === 6 )
                         {
                           const gallowDiv = document.querySelector( "#gallow" ) ;
-                          gallowDiv.innerHTML = "<div class ='parts'>You lose!</div>" ;
+                          gallowDiv.innerHTML = "<div class ='parts'>You lose! The word was: " + this.secretWord + "</div>" ;
                           document.removeEventListener( "keypress", evtListener ) ;
 
                         } else if ( this.toWin === this.secretWord.length ) {
                           const mainDiv = document.querySelector( "#main" ) ;
-                          mainDiv.innerHTML = "<div class = 'letter'>You won!</div>" ;
+                          mainDiv.innerHTML = "<div class = 'letter'>You won! The word was: " + this.secretWord + "</div>" ;
                           document.removeEventListener( "keypress", evtListener ) ;
                         } else {
                           ;
@@ -149,7 +149,7 @@ gameOn :            function()
                     } ,
   monigoteDraw :    function()
                     {
-                      this.fillBox( this.errors.length - 1 , "x" , ".parts" ) ;
+                      this.fillBox( this.errors.length - 1 , this.errors[ 0 ] , ".parts" ) ;
                     } ,
 
   requestWord :     function()
