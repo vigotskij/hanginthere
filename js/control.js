@@ -11,6 +11,8 @@ var Control = {
                       "k" , "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" ,
                       "u" , "v" , "w" , "x" , "y" , "z"
                     ] ,
+  wins :            0 ,
+  losses :          0 ,
 
   createEmptyBox :  function ()
                     {
@@ -96,13 +98,15 @@ var Control = {
                         Control.inputLetter( input ) ;
                         if ( this.errors.length === 6 )
                         {
+                          this.losses++ ;
                           const gallowDiv = document.querySelector( "#gallow" ) ;
-                          gallowDiv.innerHTML = "<div class ='parts'>You lose! The word was: " + this.secretWord + "</div>" ;
+                          gallowDiv.innerHTML = "<div class ='parts'>You lose! The word was: " + this.secretWord + " and your record is " + this.wins + " wins and " + this.losses + " losses.</div>" ;
                           document.removeEventListener( "keypress", evtListener ) ;
 
                         } else if ( this.toWin === this.secretWord.length ) {
+                          this.wins++ ;
                           const mainDiv = document.querySelector( "#main" ) ;
-                          mainDiv.innerHTML = "<div class = 'letter'>You won! The word was: " + this.secretWord + "</div>" ;
+                          mainDiv.innerHTML = "<div class = 'letter'>You won! The word was: " + this.secretWord + " and your record is " + this.wins + " wins and " + this.losses + " losses.</div>" ;
                           document.removeEventListener( "keypress", evtListener ) ;
                         } else {
                           ;

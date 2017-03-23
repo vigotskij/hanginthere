@@ -119,22 +119,32 @@ describe("Control", function() {
         let gallow = document.querySelectorAll( ".parts" ) ;
         Control.errors.length = 1 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 0 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 0 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
         Control.errors.length = 2 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 1 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 1 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
         Control.errors.length = 3 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 2 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 2 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
         Control.errors.length = 4 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 3 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 3 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
         Control.errors.length = 5 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 4 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 4 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
         Control.errors.length = 6 ;
         Control.monigoteDraw() ;
-        expect( gallow[ 5 ].outerHTML ).to.eql( '<div class="parts">x</div>' ) ;
+        expect( gallow[ 5 ].outerHTML ).to.eql( '<div class="parts">undefined</div>' ) ;
+      } ) ;
+
+    it ( 'Should keep count of wins and losses' , function ( )
+      {
+        Control.wins = 0 ;
+        Control.wins++ ;
+        expect( Control.wins ).to.eql( 1 ) ;
+        Control.losses = 0 ;
+        Control.losses++ ;
+        expect( Control.losses ).to.eql( 1 ) ;
       } ) ;
   } ) ;
 
