@@ -163,6 +163,18 @@ var Control = {
                     {
       //                this.init( Diccionary.randomWord ) ;
                     } ,
+
+  button :          function ()
+                    {
+                      const divLetter = document.querySelector( ".letter" ) ;
+                      if ( divLetter === null )
+                      {
+                        Control.init( randomWord() ) ;
+                      } else {
+                        Control.resetGame() ;
+                        Control.init( randomWord() ) ;
+                      }
+                    } ,
   } ;
 
 function contains( element , collection )

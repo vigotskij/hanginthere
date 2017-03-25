@@ -6,13 +6,14 @@ body {
 div {
   background-color: lightblue ;
   border-radius: 5px ;
-  border: 1px solid black ;
+/*  border: 1px solid black ; */
   height: auto ;
 }
 
 div#game {
   width: 50% ;
   margin: auto ;
+  margin-top: auto ;
   min-height: 150px ;
 }
 
@@ -43,4 +44,10 @@ div.parts {
   margin: 0.1em ;
   padding: 1em ;
   text-align: center ;
+}
+
+input.button {
+  border-radius: 100% ;
+  min-height: 2em ;
+  padding: 1em ;
 }
