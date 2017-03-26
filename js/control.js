@@ -70,25 +70,7 @@ var Control = {
                       this.gameOn() ;
                       return ;
                     } ,
-  evtListener :       function ( evt )
-                    {
-                      const input = String.fromCharCode( evt.charCode ).toLowerCase() ;
 
-                      Control.inputLetter( input ) ;
-                      if ( this.errors.length === 6 )
-                      {
-                        const gallowDiv = document.querySelector( "#gallow" ) ;
-                        gallowDiv.innerHTML = "<div class ='parts'>You lose!</div>" ;
-                        document.removeEventListener( "keypress", this.evtListener() ) ;
-
-                      } else if ( this.toWin === this.secretWord.length ) {
-                        const mainDiv = document.querySelector( "#main" ) ;
-                        mainDiv.innerHTML = "<div class = 'letter'>You won!</div>" ;
-                        document.removeEventListener( "keypress", this.evtListener ) ;
-                      } else {
-                        ;
-                      }
-                    } ,
   gameOn :            function()
                     {
                       let evtListener = function ( evt )
@@ -157,11 +139,6 @@ var Control = {
   monigoteDraw :    function()
                     {
                       this.fillBox( this.errors.length - 1 , this.errors[ 0 ] , ".parts" ) ;
-                    } ,
-
-  requestWord :     function()
-                    {
-      //                this.init( Diccionary.randomWord ) ;
                     } ,
 
   button :          function ()
