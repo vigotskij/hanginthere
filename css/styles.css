@@ -1,20 +1,20 @@
-body {
-  background-color: rgba(51, 193, 147, 0.58) ;
-  text-align: center ;
+*{
+  margin: 0px;
+  padding: 0px;
 }
-
-div {
-  background-color: lightblue ;
-  border-radius: 5px ;
-/*  border: 1px solid black ; */
-  height: auto ;
+body {
+  background-color:#fff ;
+  text-align: center ;
+  font-family: "Arial";
 }
 
 div#game {
-  width: 50% ;
+  width: 70%;
   margin: auto ;
-  margin-top: auto ;
-  min-height: 150px ;
+  margin-top: 10%;
+  height: auto ;
+  padding: 2%;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
 }
 
 div#main {
@@ -24,7 +24,7 @@ div.letter {
   display: inline-block ;
   min-width: 1em ;
   min-height: 1em ;
-  border: 1px solid black ;
+  border: 1.5px solid #1789af ;
   margin: 0.1em ;
   padding: 1em ;
   text-align: center ;
@@ -40,14 +40,22 @@ div.parts {
   display: inline-block ;
   min-width: 1em ;
   min-height: 1em ;
-  border: 1px solid black ;
+  border: 1.5px solid #1789af ;
   margin: 0.1em ;
   padding: 1em ;
   text-align: center ;
 }
 
 input.button {
-  border-radius: 100% ;
-  min-height: 2em ;
-  padding: 1em ;
+  border-radius: 2px;
+  border: 2px solid #1789af;
+  background: #fff;
+  color: #1789af;
+  padding: 2%;
+  transition:  all 0.2s;
+  cursor: pointer;
+}
+input.button:hover{
+  background: #1789af;
+  color:#fff;
 }
