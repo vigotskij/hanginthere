@@ -146,10 +146,10 @@ var Control = {
                       const divLetter = document.querySelector( ".letter" ) ;
                       if ( divLetter === null )
                       {
-                        Control.init( randomWord() ) ;
+                        Control.init( Dictionary.randomValue() ) ;
                       } else {
                         Control.resetGame() ;
-                        Control.init( randomWord() ) ;
+                        Control.init( Dictionary.randomValue() ) ;
                       }
                     } ,
   } ;

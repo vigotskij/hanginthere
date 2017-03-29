@@ -14,10 +14,3 @@ function occurrences(collection, item, onMatch) {
 if (typeof process !== 'undefined') {
     global.occurrences = occurrences;
 }
-
-
-function randomWord()
-{
-       const word = Dictionary[ Math.floor( Math.random() * ( Dictionary.length - 1 ) ) ] ;
-       return word ;
-}

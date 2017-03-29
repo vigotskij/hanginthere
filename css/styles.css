@@ -40,7 +40,7 @@ div.parts {
   display: inline-block ;
   min-width: 1em ;
   min-height: 1em ;
-  border: 1.5px solid #1789af ;
+  border: 1.5px solid red ;
   margin: 0.1em ;
   padding: 1em ;
   text-align: center ;
